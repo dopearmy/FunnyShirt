@@ -47,7 +47,7 @@
 /* Product zoom  */
 @import url("../plugins/icheck-1.x/skins/all.css");
 /* ion.checkRadio.min.js || customs checkbox and radio plugin  */
-@import url("skin-2.css");
+@import url("skin.css");
 /* btn styled from btn.less  */
 @import url("btn.css");
 /* Template Theme color skin */
@@ -6174,7 +6174,7 @@ div.quickview {
     margin-top: 30px;
 }
 
-//Process Bar site
+/*Process Bar site*/
 .pace {
     -webkit-pointer-events: none;
     pointer-events: none;
