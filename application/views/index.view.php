@@ -22,7 +22,7 @@
     <div class="row featuredPostContainer globalPadding style2">
         <h3 class="section-title style2 text-center"><span>Produtos Destaque</span></h3>
         <div id="productslider" class="owl-carousel owl-theme">
-            <?php.
+            <?php
                //TODO Colocar só destaques
                 foreach ($produtosRelacionados as $linha) {
                     $linha['ID'];
