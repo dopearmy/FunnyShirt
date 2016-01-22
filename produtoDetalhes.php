@@ -1,0 +1,26 @@
+<?php
+
+require_once("./application/inc/controllerInit.php");
+require_once("./application/models/autenticacao.model.php");
+require_once("./application/models/produtos.model.php");
+require_once("./application/models/carrinho.model.php");
+
+if (isset($_GET['ID']))
+    $produtoID = $_GET['ID'];
+
+
+//Devolve info produtos pelo id do produto
+$produtos = getInfoProdutoID($produtoID);
+
+//Lista de produtos Encurtada
+$produtosRelacionados = getProdutosRelacionados();
+
+
+// Variáveis usadas pelo do template
+$tituloPagina = "Detalhes do Produto";
+
+require("./application/views/top.template.php");
+require("./application/views/produtoModel.view.php");
+require("./application/views/tamanhosModel.view.php");
+require("./application/views/produtoDetalhes.view.php");
+require("./application/views/bottom.template.php");
