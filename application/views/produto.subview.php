@@ -17,7 +17,8 @@ foreach ($produtos as $linha) {
             </a>
             <div class="image">
                 <div class="quickview">
-                    <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
+                    <!--<a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>-->
+                    <a class="btn btn-xs btn-quickview" href="produtoDetalhes.php?ID=<?php echo $linha["ID"] ?>" >Quick View </a>
                 </div>
                 <a href="produtoDetalhes.php?ID=<?php echo $linha['ID'] ?>">
                     <img src="images/product/t_shirt_<?php echo $linha['ID'] ?>.png" alt="img" class="img-responsive">

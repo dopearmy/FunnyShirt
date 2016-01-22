@@ -30,278 +30,55 @@
                     $linha['Preco'];
                     $linha['DataEntrada'];
                 }
-
-                foreach ($produtosRelacionados as $linha) {
-                echo '<div class="item">
+                foreach ($produtosRelacionados as $linha) { ?>
+                <div class="item">
                     <div class="product">
-                        <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
-                           data-placement="left">
+                        <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist" data-placement="left">
                             <i class="glyphicon glyphicon-heart"></i>
                         </a>
                         <div class="image">
-            <div class="quickview">
-                <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
-            </div>';
+                        <div class="quickview">
+                            <!--<a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>-->
+                            <a class="btn btn-xs btn-quickview" href="produtoDetalhes.php?ID=<?php echo $linha["ID"] ?>">Quick View </a>
 
-            //Imagem + link produto
-            echo '<a href="produtoDetalhes.php?ID='.$linha['ID'].'">'
-                    . '<img src="images/product/t_shirt_'.$linha['ID'].'.png" alt="img" class="img-responsive">'
-                    . '</a>';
+                        </div>
 
-            echo '<div class="promotion"><span class="discount">15% OFF</span></div>
-            </div>
-            <div class="description">';
+                        <!-- Imagem + link produto-->
+                        <a href="produtoDetalhes.php?ID=<?php echo $linha["ID"] ?>">
+                            <img src="images/product/t_shirt_<?php echo $linha["ID"] ?>.png" alt="img" class="img-responsive"> 
+                        </a>
 
-            //Nome prduto
-            echo '<h4><a href="produtoDetalhes.php">' .$linha['Nome']. '</a></h4>';
+                        <div class="promotion"><span class="discount">15% OFF</span></div>
+                        </div>
+                        <div class="description">
 
-            echo'<div class="grid-description">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <!-- Nome prduto -->
+                        <h4><a href="produtoDetalhes.php?ID=<?php echo $linha["ID"] ?>"><?php echo $linha["Nome"] ?></a></h4>
+
+                        <div class="grid-description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        <strong>Tamanhos:</strong>
+                        <span class="size">XS / S / M / L / XL</span></div><br>
+
+                        <div class="price"><span class="bold"><?php echo number_format($linha['Preco'], 2, '.', '') . '&nbsp€'; ?></span></span></div>
+                        <div class="action-control">
+                            <a href="carrinho_add.php?idProduto=<?php echo $linha['ID'] ?>" class="btn btn-primary">
+                                <span class="add2cart"><i class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            <strong>Tamanhos:</strong>
-            <span class="size">XS / S / M / L / XL</span></div><br>';
-
-            //Peço prduto
-            echo '<div class="price"><span>' .number_format($linha['Preco'], 2, '.', ''). '&nbsp€</span></div>';
-            echo '<div class="action-control"><a class="btn btn-primary"><span class="add2cart"><i class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a></div>
-                </div>
-            </div>';
-            }
-        ?>
+            <?php } ?>
         <!--/.productslider-->
-    </div>
+        </div>
     <!--/.featuredPostContainer-->
+    </div>
 </div>
 <!-- /main container -->
 
-<div class="container main-container">
+<div class="container main-container" style="margin-top: ">
     <!-- Main component call to action -->
-    <div class="morePost row featuredPostContainer style2 globalPaddingTop ">
-        <h3 class="section-title style2 text-center"><span>Todos Produtos</span></h3>
-        <div class="container">
-            <div class="row xsResponse">
-                <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                    <div class="product">
-                        <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
-                           data-placement="left">
-                            <i class="glyphicon glyphicon-heart"></i>
-                        </a>
-                        <div class="image">
-                            <div class="quickview">
-                                <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html"
-                                   data-target="#productSetailsModalAjax">Quick View </a>
-                            </div>
-                            <a href="produtoDetalhes.php"><img src="images/product/30.jpg" alt="img"
-                                                                class="img-responsive"></a>
-
-                            <div class="promotion"><span class="new-product"> NEW</span> <span
-                                    class="discount">15% OFF</span></div>
-                        </div>
-                        <div class="description">
-                            <h4><a href="produtoDetalhes.php">aliquam erat volutpat</a></h4>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <span class="size">XL / XXL / S </span></div>
-                        <div class="price"><span>$25</span> <span class="old-price">$75</span></div>
-                        <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i
-                                class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a></div>
-                    </div>
-                </div>
-                <!--/.item-->
-                <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                    <div class="product">
-                        <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
-                           data-placement="left">
-                            <i class="glyphicon glyphicon-heart"></i>
-                        </a>
-
-                        <div class="image">
-                            <div class="quickview">
-                                <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html"
-                                   data-target="#productSetailsModalAjax">Quick View </a>
-                            </div>
-                            <a href="produtoDetalhes.php"><img src="images/product/31.jpg" alt="img"
-                                                                class="img-responsive"></a>
-
-                            <div class="promotion"><span class="discount">15% OFF</span></div>
-                        </div>
-                        <div class="description">
-                            <h4><a href="produtoDetalhes.php">ullamcorper suscipit lobortis </a></h4>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <span class="size">XL / XXL / S </span></div>
-                        <div class="price"><span>$25</span></div>
-                        <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i
-                                class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a></div>
-                    </div>
-                </div>
-                <!--/.item-->
-                <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                    <div class="product">
-                        <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
-                           data-placement="left">
-                            <i class="glyphicon glyphicon-heart"></i>
-                        </a>
-
-                        <div class="image">
-                            <div class="quickview">
-                                <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html"
-                                   data-target="#productSetailsModalAjax">Quick View </a>
-                            </div>
-                            <a href="produtoDetalhes.php"><img src="images/product/34.jpg" alt="img"
-                                                                class="img-responsive"></a>
-
-                            <div class="promotion"><span class="new-product"> NEW</span></div>
-                        </div>
-                        <div class="description">
-                            <h4><a href="produtoDetalhes.php">demonstraverunt lectores </a></h4>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <span class="size">XL / XXL / S </span></div>
-                        <div class="price"><span>$25</span></div>
-                        <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i
-                                class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a></div>
-                    </div>
-                </div>
-                <!--/.item-->
-                <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                    <div class="product">
-                        <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
-                           data-placement="left">
-                            <i class="glyphicon glyphicon-heart"></i>
-                        </a>
-
-                        <div class="image">
-                            <div class="quickview">
-                                <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html"
-                                   data-target="#productSetailsModalAjax">Quick View </a>
-                            </div>
-                            <a href="produtoDetalhes.php"><img src="images/product/12.jpg" alt="img"
-                                                                class="img-responsive"></a></div>
-                        <div class="description">
-                            <h4><a href="produtoDetalhes.php">humanitatis per</a></h4>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <span class="size">XL / XXL / S </span></div>
-                        <div class="price"><span>$25</span></div>
-                        <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i
-                                class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a></div>
-                    </div>
-                </div>
-                <!--/.item-->
-                <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                    <div class="product">
-                        <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
-                           data-placement="left">
-                            <i class="glyphicon glyphicon-heart"></i>
-                        </a>
-
-                        <div class="image">
-                            <div class="quickview">
-                                <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html"
-                                   data-target="#productSetailsModalAjax">Quick View </a>
-                            </div>
-                            <a href="produtoDetalhes.php"><img src="images/product/33.jpg" alt="img"
-                                                                class="img-responsive"></a></div>
-                        <div class="description">
-                            <h4><a href="produtoDetalhes.php">Eodem modo typi</a></h4>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <span class="size">XL / XXL / S </span></div>
-                        <div class="price"><span>$25</span></div>
-                        <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i
-                                class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a></div>
-                    </div>
-                </div>
-                <!--/.item-->
-                <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                    <div class="product">
-                        <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
-                           data-placement="left">
-                            <i class="glyphicon glyphicon-heart"></i>
-                        </a>
-
-                        <div class="image">
-                            <div class="quickview">
-                                <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html"
-                                   data-target="#productSetailsModalAjax">Quick View </a>
-                            </div>
-                            <a href="produtoDetalhes.php"><img src="images/product/10.jpg" alt="img"
-                                                                class="img-responsive"></a></div>
-                        <div class="description">
-                            <h4><a href="produtoDetalhes.php">sequitur mutationem </a></h4>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <span class="size">XL / XXL / S </span></div>
-                        <div class="price"><span>$25</span></div>
-                        <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i
-                                class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a></div>
-                    </div>
-                </div>
-                <!--/.item-->
-                <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                    <div class="product">
-                        <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
-                           data-placement="left">
-                            <i class="glyphicon glyphicon-heart"></i>
-                        </a>
-
-                        <div class="image">
-                            <div class="quickview">
-                                <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html"
-                                   data-target="#productSetailsModalAjax">Quick View </a>
-                            </div>
-                            <a href="produtoDetalhes.php"><img src="images/product/37.jpg" alt="img"
-                                                                class="img-responsive"></a></div>
-                        <div class="description">
-                            <h4><a href="produtoDetalhes.php">consuetudium lectorum.</a></h4>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <span class="size">XL / XXL / S </span></div>
-                        <div class="price"><span>$25</span></div>
-                        <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i
-                                class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a></div>
-                    </div>
-                </div>
-                <!--/.item-->
-                <div class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                    <div class="product">
-                        <a class="add-fav tooltipHere" data-toggle="tooltip" data-original-title="Add to Wishlist"
-                           data-placement="left">
-                            <i class="glyphicon glyphicon-heart"></i>
-                        </a>
-
-                        <div class="image">
-                            <div class="quickview">
-                                <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html"
-                                   data-target="#productSetailsModalAjax">Quick View </a>
-                            </div>
-                            <a href="produtoDetalhes.php"><img src="images/product/35.jpg" alt="img"
-                                                                class="img-responsive"></a></div>
-                        <div class="description">
-                            <h4><a href="produtoDetalhes.php">parum claram</a></h4>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <span class="size">XL / XXL / S </span></div>
-                        <div class="price"><span>$25</span> <span class="old-price">$75</span></div>
-                        <div class="action-control"><a class="btn btn-primary"> <span class="add2cart"><i
-                                class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a></div>
-                    </div>
-                </div>
-                <!--/.item-->
-            </div>
-            <!-- /.row -->
-
-            <div class="row">
-                <div class="load-more-block text-center">
-                    <a class="btn btn-thin" href="#"><i class="fa fa-plus-sign">+</i>&nbsp;MAIS PRODUTOS</a>
-                </div>
-            </div>
-        </div>
-        <!--/.container-->
-    </div>
-    <!--/.featuredPostContainer-->
-
     <hr class="no-margin-top">
     <div class="width100 section-block ">
         <div class="row featureImg">

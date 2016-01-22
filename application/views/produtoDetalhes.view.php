@@ -473,7 +473,9 @@ foreach ($produtos as $linha) {
                     </a>
                     <div class="image">
                         <div class="quickview">
-                            <a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>
+                            <!--<a data-toggle="modal" class="btn btn-xs btn-quickview" href="ajax/product.html" data-target="#productSetailsModalAjax">Quick View </a>-->
+                            <a class="btn btn-xs btn-quickview" href="produtoDetalhes.php?ID=<?php echo $linha["ID"] ?>">Quick View </a>
+
                         </div>
 
                         <a href="produtoDetalhes.php?ID=<?php echo $linha['ID'] ?>">

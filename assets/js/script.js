@@ -394,11 +394,10 @@ $(document).ready(function () {
 
 
     } else {
-        // All Desktop 
-        $(window).bind('scroll', function (e) {
-            parallaxScroll();
-        });
-
+//        // All Desktop 
+//        $(window).bind('scroll', function (e) {
+//            parallaxScroll();
+//        });
 //        function parallaxScroll() {
 //            var scrolledY = $(window).scrollTop();
 //            var sc = ((scrolledY * 0.3)) + 'px';
