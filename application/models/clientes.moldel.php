@@ -42,6 +42,19 @@ function validarDadosCliente($nome, $nContribuinte, $telefone, $morada, $dataNas
     return $arrayMensagens;
 }
 
+function validarVisa($visa) {
+    $arrayMensagens = array();
+
+    if (trim($visa) == "") {
+        $arrayMensagens["visa"] = "Numero Visa é obrigatório";
+    } else
+    if ((strlen($visa) != 16)) {
+        $arrayMensagens["visa"] = "Numero Visa tem de ter 16 carateres";
+    }
+    
+    return $arrayMensagens;
+}
+
 function alterarDadosCliente($id, $nome, $nContribuinte, $telefone, $morada, $dataNasc) {
     try {
         $query = "UPDATE cliente SET Nome=?, NumContribuinte=?, Telefone=?, Endereco=?, DataNascimento=? WHERE IDCliente=?";

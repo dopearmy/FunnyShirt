@@ -80,3 +80,11 @@ function selectListOfValues($arrayValues, $selectedValue, $extraValue = "", $ext
     }
     return $str;
 }
+
+
+function test_input($data) {
+   $data = trim($data);
+   $data = stripslashes($data);
+   $data = htmlspecialchars($data);
+   return $data;
+}

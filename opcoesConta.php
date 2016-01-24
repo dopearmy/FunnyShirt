@@ -76,7 +76,6 @@ if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
 } else if (!empty($_POST)) { // Formulário foi submetido - é um pedido POST
     $dadosSubmetidos = true;
     $data = $_POST;
-    var_dump($data);
     //$nome, $nContribuinte, $telefone, $morada, $dataNasc
     $msgErros = validarDadosCliente($data["nome"], $data["contribuinte"], $data["telefone"], $data["endereco"], $data["dataNasc"]);
     if (count($msgErros) > 0) {

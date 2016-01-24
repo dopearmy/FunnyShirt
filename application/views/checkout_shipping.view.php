@@ -18,7 +18,7 @@
                             <a href="checkout_dados.php"> <i class="fa fa-map-marker "></i> <span>DADOS</span></a>
                         </li>
                         <li class="active">
-                            <a href="<?php $_SERVER['PHP_SELF'] ?>"> <i class="fa fa-map-marker "></i> <span>SHIPPING</span></a>
+                            <a href="checkout_shipping.php"> <i class="fa fa-map-marker "></i> <span>SHIPPING</span></a>
                         </li>
                         <li class="">
                             <a href="checkout_pagamento.php"> <i class="fa fa-map-marker "></i> <span>PAGAMENTO</span></a>
@@ -27,32 +27,19 @@
                             <a href="checkout_finalizar.php"><i class="fa fa-check-square "></i><span>FINALIZAR</span></a>
                         </li>
                         <li class="">
-                            <a href="dadosCompra.php"><i class="fa fa-thumbs-o-up "></i><span>OBRIGADO</span></a>
+                            <a href="XXXX.php"><i class="fa fa-thumbs-o-up "></i><span>OBRIGADO</span></a>
                         </li>
+                    </ul>
+                    <!--/.orderStep end-->
+                </div>
+                <div class="w100 clearfix">
+                    <div class="row userInfo">
                         <?php if (isset($msgGlobal)) : ?>
                             <div class="<?php echoAlertClass($tipoMsgGlobal); ?>">
                                 <a href="#" class="close" data-dismiss="alert">&times;</a>
                                 <strong><?php echoTipoMensagem($tipoMsgGlobal); ?></strong> <?php echo $msgGlobal; ?>
                             </div>
                         <?php endif; ?>
-                    </ul>
-                    <!--/.orderStep end-->
-                </div>
-
-                <div class="w100 clearfix">
-                    <div class="row userInfo">
-                        <?php
-                        foreach ($infoCliente as $linha) {
-                            $linha['IDCliente'];
-                            $linha['Nome'];
-                            $linha['NumContribuinte'];
-                            $linha['Telefone'];
-                            $linha['Endereco'];
-                            $linha['DataNascimento'];
-                            $linha['UserID'];
-                        }
-                        ?>
-
                     </div>
                     <!--/row end-->
 
@@ -106,55 +93,8 @@
         <!--/row end-->
 
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-12 rightSidebar">
-        <div class="w100 cartMiniTable">
-            <table id="cart-summary" class="std table">
-                <tbody>
-                    <tr>
-                        <td><strong>Total:</strong><br>
-                            *sem taxas incl
-                        </td>
-                        <td class="price">
-                            <?php
-                            //controllerInit
-                            echo $totalCarrinho . '&nbsp€';
-                            ?> 
-                        </td>
-                    </tr>
-                    <tr style="">
-                        <td><strong>Shipping:</strong></td>
-                        <td class="price"><span class="success">Free shipping!</span></td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>Total taxas:</strong></td>
-                        <td class="price" id="total-tax">$0.00</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Total:</strong><br>
-                            *taxas incl
-                        </td>
-                        <td class=" site-color" id="total-price">
-                            <?php
-                            //controllerInit
-                            echo $totalCarrinho . '&nbsp€';
-                            ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <div class="input-append couponForm">
-                                <input class="col-lg-8" id="appendedInputButton" type="text" value="#FreeShipping" placeholder="Código Coupon">
-                                <button class="col-lg-4 btn btn-success" type="button">Aplicar</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!--  /cartMiniTable-->
-
-    </div>
+    <!--rightSidebar-->
+    <?php require_once('./application/views/checkout_sidebar.subview.php');?>
     <!--/rightSidebar-->
 </div>
 <!--/row-->
