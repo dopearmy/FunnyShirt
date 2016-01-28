@@ -152,7 +152,7 @@
 <!-- Include custom script validation forms  -->
 <script src="assets/js/validarForms.js"></script>
 
-<!-- Include custom script validation forms  -->
+<!-- Include custom script datatables forms  -->
 <script src="http://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 
 <!-- Include custom script site  -->

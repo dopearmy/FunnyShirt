@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Loja Online T-Shirts">
-        <meta name="author" content="Group xx for DAW II">
+        <meta name="author" content="Group 03 for DAW II">
 
         <!-- Fav and touch icons -->
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
@@ -64,7 +64,14 @@
                                                 <span class="hidden-xs"><i class="glyphicon glyphicon-user"></i>&nbsp;Registar</span>
                                             </a>
                                         </li>
-                                    <?php else: ?>    
+                                    <?php else: ?> 
+                                        <?php if (isUserAdmin()): ?>
+                                        <li class="dropdown">
+                                            <a href="cp_index.php" ><span class="hidden-xs">
+                                                <i class="glyphicon glyphicon-edit"></i>&nbsp;Painel Administração&nbsp;</span>
+                                            </a>
+                                        </li>
+                                        <?php endif; ?>
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="hidden-xs">
                                                     <i class="glyphicon glyphicon-user"></i>&nbsp;Bem-vindo,&nbsp;</span>
@@ -75,6 +82,7 @@
                                                 <li><a href='logout.php'>Sair</a></li>
                                             </ul>
                                         </li>
+                                        
                                     <?php endif; ?>
                                     <!--<li class="hidden-xs">
                                         <a data-toggle="modal" data-dismiss="modal" href="#ModalSignup">

@@ -201,8 +201,9 @@ function isUserAnonimo(){
 }
 
 function isUserAdmin(){
-    if (isset($_SESSION['UserInfo']))
-        return $_SESSION['UserInfo']['tipouser']=='ADM';
+    if (isset($_SESSION['UserInfo'])) {
+        return $_SESSION['UserInfo']['TipoUser'] == 'G';
+    }
     return false;
 }
 

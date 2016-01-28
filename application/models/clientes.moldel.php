@@ -2,6 +2,15 @@
 
 require_once("./application/inc/db.php");
 
+
+function getInfoClientes() {
+    $query = "SELECT * FROM cliente";
+    $stmt = db()->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQL_ASSOC);
+}
+
 /*
  * @return info de cliente por userID
  * 
