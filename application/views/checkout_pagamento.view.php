@@ -45,88 +45,84 @@
                             <p>Todas as transações são seguras e criptografadas, para saber mais conulte a nossa política de privacidade</p>
                             <hr>
                         </div>
-                        <div class="col-xs-12 col-sm-12">
-                            <div class="paymentBox">
-                                <div class="panel-group paymentMethod" id="accordion">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading panel-heading-custom">
-                                            <h4 class="panel-title">
-                                                <a class="cashOnDelivery" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                                    <span class="numberCircuil">Opção 1</span> 
-                                                    <strong> Entrega à cobrança</strong> 
-                                                </a>
-                                            </h4>
-                                        </div>
+                        <form action="checkout_finalizar.php" method="GET">
+                            <div class="col-xs-12 col-sm-12">
+                                <div class="paymentBox">
+                                    <div class="panel-group paymentMethod" id="accordion">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading panel-heading-custom">
+                                                <h4 class="panel-title">
+                                                    <a class="cashOnDelivery" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                        <span class="numberCircuil">Opção 1</span> 
+                                                        <strong> Cartão Visa</strong> 
+                                                    </a>
+                                                </h4>
+                                            </div>
 
-                                        <div id="collapseOne" class="panel-collapse collapse in">
-                                            <div class="panel-body">
-                                                <br>
-                                                <form action="checkout_finalizar.php" method="GET">
-                                                    <label class="radio-inline" for="radios-4">
-                                                        <input name="pagamento" id="radios-4" value="Cobrança" type="radio">
-                                                        À Cobrança</label>
-                                                    <div class="form-group clearfix">
-                                                        <br>
-                                                        <p>CTT Expresso<br>
-                                                            Entrega enviada um dia após a encomenda com entrega prevista de 3 a 5 dias na sua morada.</p>
+                                            <div id="collapseOne" class="panel-collapse collapse in">
+                                                <div class="panel-body">
+                                                    <br>
+                                                    <div class="creditCard">
+                                                        <label class="radio-inline" for="visa">
+                                                            <input name="pagamento" id="visa" value="VISA" type="radio" <?php if (isset($_GET['pagamento']) == "checked") echo 'checked'; ?>>
+                                                            VISA</label><br>
+                                                        <img src="./images/site/payment/cartaoVisa.png" alt="Visa">
+
+                                                        <div<?php echoClassformGroup('visa', $msgErros, $dadosSubmetidos); ?>>
+                                                            <label for="idTelefone">Número VISA</label>
+                                                            <input type="text" id="idVisa" name="visa" value="" placeholder="Escreva os 16 digitos" class="form-control">
+                                                            <?php echoMsgErro("visa", $msgErros); ?>
+                                                        </div>
                                                     </div>
+                                                    <!--creditCard-->
+
                                                     <div class="pull-right">
                                                         <button type="submit" class="btn btn-primary btn-small">
                                                             Seguinte &nbsp;<i class="fa fa-arrow-circle-right"></i>
                                                         </button>
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading panel-heading-custom">
-                                            <h4 class="panel-title">
-                                                <a class="masterCard" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> 
-                                                    <span class="numberCircuil">Opção 2</span>
-                                                    <strong>Cartão Visa</strong> 
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseThree" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <br>
-                                                <div class="panel open">
-                                                    <form action="<?php $_SERVER['PHP_SELF'] ?>">
-                                                        <div class="creditCard">
-                                                            <label class="radio-inline" for="visa">
-                                                                <input name="pagamento" id="visa" value="VISA" type="radio">
-                                                                VISA</label><br>
-                                                            <img src="./images/site/payment/cartaoVisa.png" alt="Visa">
-
-                                                            <div<?php echoClassformGroup('visa', $msgErros, $dadosSubmetidos); ?>>
-                                                                <label for="idTelefone">Número VISA</label>
-                                                                <input type="text" id="idVisa" name="visa" value="" placeholder="Escreva os 16 digitos" class="form-control">
-                                                                <?php echoMsgErro("visa", $msgErros); ?>
-                                                            </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading panel-heading-custom">
+                                                <h4 class="panel-title">
+                                                    <a class="masterCard" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> 
+                                                        <span class="numberCircuil">Opção 2</span>
+                                                        <strong>Envio à cobrança</strong> 
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseThree" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <br>
+                                                    <div class="panel open">
+                                                        <label class="radio-inline" for="radios-4">
+                                                            <input name="pagamento" id="radios-4" value="Cobrança" type="radio">
+                                                            À Cobrança</label>
+                                                        <div class="form-group clearfix">
+                                                            <br>
+                                                            <p>CTT Expresso<br>
+                                                                Entrega enviada um dia após a encomenda com entrega prevista de 3 a 5 dias na sua morada.</p>
                                                         </div>
-                                                        <!--creditCard-->
-
                                                         <div class="pull-right">
                                                             <button type="submit" class="btn btn-primary btn-small">
                                                                 Seguinte &nbsp;<i class="fa fa-arrow-circle-right"></i>
                                                             </button>
                                                         </div>
-                                                    </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading panel-heading-custom">
-                                            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                                    <span class="numberCircuil">Opção 3</span><strong>&nbsp;PayPal</strong>
-                                                </a></h4>
-                                        </div>
-                                        <div id="collapseTwo" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <br>
-                                                <form action="checkout_XXXXXXXXXXXXXXXXXXXXXXX.php">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading panel-heading-custom">
+                                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                        <span class="numberCircuil">Opção 3</span><strong>&nbsp;PayPal</strong>
+                                                    </a></h4>
+                                            </div>
+                                            <div id="collapseTwo" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <br>
                                                     <label class="radio-inline" for="radios-3">
                                                         <input name="pagamento" id="radios-3" value="4" type="radio">
                                                         <img src="images/site/payment/paypal-small.png" height="18" alt="paypal"> Pagar com paypal 
@@ -137,20 +133,24 @@
                                                             Seguinte &nbsp;<i class="fa fa-arrow-circle-right"></i>
                                                         </button>
                                                     </div>
-                                                </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cartFooter w100">
+                                        <div class="box-footer">
+                                            <div class="pull-left">
+                                                <a class="btn btn-default" href="checkout-3.html"> <i class="fa fa-arrow-left"></i> &nbsp; Retroceder</a>
+                                            </div>
+                                            <div class="pull-right">
+                                                <a class="btn btn-primary btn-small " href="checkout_finalizar.php">
+                                                    Seguinte &nbsp; <i class="fa fa-arrow-circle-right"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="cartFooter w100">
-                                    <div class="box-footer">
-                                        <div class="pull-left">
-                                            <a class="btn btn-default" href="checkout-3.html"> <i class="fa fa-arrow-left"></i> &nbsp; Billing addressasdasd </a>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
+                        </form>
 
 
                     </div>

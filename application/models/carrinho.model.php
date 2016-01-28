@@ -112,7 +112,7 @@ function removerLinhaCarrinho($idProduto) {
  * 
  */
 
-function confirmarCarrinho($idCliente) {
+function confirmarCarrinho($idCliente, $numVisa, $endereco, $linhaEncomenda) {
     if (!isset($_SESSION["cart"])) {
         return -1;
     }
@@ -120,20 +120,35 @@ function confirmarCarrinho($idCliente) {
         return -1;
     }
     $idEncomenda = -1;
+    $tamanho = "M";
+    $total= getTotalCarrinho();
     try {
         db()->autocommit(false);
-        $stmt = db()->prepare('insert into encomenda (IDCliente, Data, Total, NumVisa, Endereco, Entregue) values (CURDATE(), ?)');
-        $stmt->bind_param("i", $idCliente);
+        $stmt = db()->prepare('insert into encomenda (IDCliente, Data, Total, NumVisa, Endereco, Entregue) values (?,CURDATE(), ?,?,?,0)');
+        $stmt->bind_param("idds", $idCliente, $total, $numVisa, $endereco);
         $stmt->execute();
+
         if ($stmt->affected_rows != 1) {
             throw new Exception('Não inseriu encomenda corretamente');
         }
         $idEncomenda = db()->insert_id;
-        $stmt = db()->prepare('insert into linhaencomenda (IDEncomenda, IDTShirt, Personalizada, IDImagemPersonalizada, Quantidade, Tamanho, PrecoUn) values (?, ?)');
-        foreach ($_SESSION["cart"] as $key => $value) {
-            $stmt->bind_param("ii", $idEncomenda, $key);
+        $stmt = db()->prepare('insert into linhaencomenda (IDTShirt, Personalizada, IDImagemPersonalizada, Quantidade, Tamanho, PrecoUn) values (?, 0, null, ?, ?, ?)');
+        
+        var_dump("insert into linhaencomenda (IDTShirt, Personalizada, IDImagemPersonalizada, Quantidade, Tamanho, PrecoUn) values (?, 0, null, ?, ?, ?)");
+        //insert into linhaencomenda (IDTShirt, Personalizada, IDImagemPersonalizada, Quantidade, Tamanho, PrecoUn) values (64, 0, null, 4, 'm', 19.9900)
+        var_dump($linhaEncomenda);
+        
+        foreach ($linhaEncomenda as $key => $linha) {
+            $preco = (float)$linha['Preco'];
+            $stmt->bind_param("iisd", $key, $linha['qtd'], $tamanho, $preco);
+            var_dump($key);
+            var_dump($linha['qtd']);
+            var_dump($tamanho);
+            var_dump($preco);
             $stmt->execute();
             if ($stmt->affected_rows != 1) {
+                echo "ERRORRRRRR";
+                exit();
                 throw new Exception('Não inseriu a encomenda corretamente');
             }
         }

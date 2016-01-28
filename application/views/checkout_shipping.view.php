@@ -76,12 +76,12 @@
                     <div class="cartFooter w100">
                                 <div class="box-footer">
                                     <div class="pull-left">
-                                        <a class="btn btn-default" href="produtos.php"> 
-                                            <i class="fa fa-arrow-left"></i> &nbsp; Voltar à loja 
+                                        <a class="btn btn-default" href="checkout_dados.php"> 
+                                            <i class="fa fa-arrow-left"></i> &nbsp; Retroceder
                                         </a>
                                     </div>
                                     <div class="pull-right">
-                                        <a class="btn btn-primary btn-small " href="checkout-2.html">
+                                        <a class="btn btn-primary btn-small " href="checkout_pagamento.php">
                                             Seguinte &nbsp; <i class="fa fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>

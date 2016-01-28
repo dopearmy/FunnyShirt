@@ -26,6 +26,21 @@ if(isUserAnonimo()){
     }
 }
 
+if(!isset($_SESSION['cart'])){
+    $_SESSION["flash_loginMessage"]="Acesso Negado: O seu carrinho está vazio";
+    $_SESSION["flash_loginRedirectTo"]= $_SERVER["REQUEST_URI"];
+    exit(header("Location: carrinho_show.php"));
+}
+
+
+if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
+    if (isset($_SESSION["flash_msgGlobal"])) {
+        $msgGlobal = $_SESSION["flash_msgGlobal"];
+        unset($_SESSION["flash_msgGlobal"]);
+        $tipoMsgGlobal = "S";
+    }
+}
+
 
 $tituloPagina = "Finalizar Compra";
 

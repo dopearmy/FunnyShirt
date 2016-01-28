@@ -9,6 +9,9 @@ if (isset($_GET['ID']))
     $produtoID = $_GET['ID'];
 
 
+if (!isset($produtoID)) {
+    exit(header("Location: notFound.php"));
+}
 //Devolve info produtos pelo id do produto
 $produtos = getInfoProdutoID($produtoID);
 

@@ -1,4 +1,5 @@
 <?php
+
 require_once("./application/inc/controllerInit.php");
 require_once("./application/models/autenticacao.model.php");
 require_once("./application/models/produtos.model.php");
@@ -17,29 +18,20 @@ $pagamentoErro = "";
 $infoCliente = getInfoCliente(getUserInfo()["UserID"]);
 
 //Se não estiver logado redireciona para login.php
-if(isUserAnonimo()){
+if (isUserAnonimo()) {
     if (headers_sent()) {
         die("O redirecionamento falhou. Por favor, clique neste link: <a href=login.php>Login</a>");
-    }
-    else{
-        $_SESSION["flash_loginMessage"]="Acesso Negado: Efectue Login para visualizar o conteudo.";
-        $_SESSION["flash_loginRedirectTo"]= $_SERVER["REQUEST_URI"];
+    } else {
+        $_SESSION["flash_loginMessage"] = "Acesso Negado: Efectue Login para visualizar o conteudo.";
+        $_SESSION["flash_loginRedirectTo"] = $_SERVER["REQUEST_URI"];
         exit(header("Location: login.php"));
     }
 }
-if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
-    if (isset($_SESSION["flash_msgGlobal"])) {
-        $msgGlobal = $_SESSION["flash_msgGlobal"];
-        unset($_SESSION["flash_msgGlobal"]);
-        $tipoMsgGlobal = "S";
-    }
-} elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
-    if (empty($_POST["gender"])) {
-        $msgErros = "Gender is required";
-        $tipoMsgGlobal = "E";
-    } else {
-        $pagamento = test_input($_POST["gender"]);
-    }
+
+if(!isset($_SESSION['cart'])){
+    $_SESSION["flash_loginMessage"]="Acesso Negado: O seu carrinho está vazio";
+    $_SESSION["flash_loginRedirectTo"]= $_SERVER["REQUEST_URI"];
+    exit(header("Location: carrinho_show.php"));
 }
 
 if (empty($_GET)) { // Formulário não foi submetido - é um pedido GET
@@ -51,13 +43,16 @@ if (empty($_GET)) { // Formulário não foi submetido - é um pedido GET
 } else if (!empty($_GET)) { // Formulário foi submetido - é um pedido POST
     $dadosSubmetidos = true;
     $data = $_GET;
-    //$nome, $nContribuinte, $telefone, $morada, $dataNasc
-    $msgErros = validarVisa($data['visa']);
-    if (count($msgErros) > 0) {
-        $msgGlobal = "Existem valores inválidos no formulário";
-        $tipoMsgGlobal = "A";
+    if (isset($_GET['pagamento']) == "checked") {
+        //$nome, $nContribuinte, $telefone, $morada, $dataNasc
+        $msgErros = validarVisa($data['visa']);
+        if (count($msgErros) > 0) {
+            $msgGlobal = "Existem valores inválidos no número visa";
+            $tipoMsgGlobal = "E";
+        }
     } else {
-        $pagamento = test_input($_POST["gender"]);
+        $msgGlobal = "Selecione uma opção de pagamento";
+        $tipoMsgGlobal = "E";
     }
 }
 

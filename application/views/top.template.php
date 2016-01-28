@@ -129,14 +129,14 @@
                                                 <tr class="miniCartProduct">
                                                     <td style="width:20%" class="miniCartProductThumb">
                                                         <div>
-                                                            <a href="produtoDetalhes.php">
+                                                            <a href="produtoDetalhes.php?ID=<?php echo $linha["ID"]?>">
                                                                 <img src="images/product/t_shirt_<?php echo $linha["ID"] ?>.png" alt="img" class="img-responsive"> 
                                                             </a>
                                                         </div>
                                                     </td>
                                                     <td style="width:40%">
                                                         <div class="miniCartDescription">
-                                                            <h4><a href="produtoDetalhes.php"><?php echo $linha["Nome"] ?></a></h4>
+                                                            <h4><a href="produtoDetalhes.php?ID=<?php echo $linha["ID"]?>"><?php echo $linha["Nome"] ?></a></h4>
                                                             <div class=""><span><?php echo number_format($linha['Preco'], 2, '.', '') . '&nbsp€'; ?></span></div>
                                                         </div>
 
@@ -242,14 +242,14 @@
                                                         <tr class="miniCartProduct">
                                                             <td style="width:20%" class="miniCartProductThumb">
                                                                 <div>
-                                                                    <a href="produtoDetalhes.php">
+                                                                    <a href="produtoDetalhes.php?ID=<?php echo $linha["ID"]?>">
                                                                         <img src="images/product/t_shirt_<?php echo $linha["ID"] ?>.png" alt="img" class="img-responsive"> 
                                                                     </a>
                                                                 </div>
                                                             </td>
                                                             <td style="width:40%">
                                                                 <div class="miniCartDescription">
-                                                                    <h4><a href="produtoDetalhes.php"><?php echo $linha["Nome"] ?></a></h4>
+                                                                    <h4><a href="produtoDetalhes.php?ID=<?php echo $linha["ID"]?>"><?php echo $linha["Nome"] ?></a></h4>
                                                                     <div class=""><span><?php echo number_format($linha['Preco'], 2, '.', '') . '&nbsp€'; ?></span></div>
                                                                 </div>
 

@@ -9,7 +9,6 @@ require_once("./application/inc/db.php");
 
 function getInfoCliente($userID) {
     $query = "SELECT * FROM cliente WHERE UserID = ?";
-
     $stmt = db()->prepare($query);
     $stmt->bind_param("i", $userID);
     $stmt->execute();

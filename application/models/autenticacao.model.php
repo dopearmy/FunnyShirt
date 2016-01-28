@@ -217,3 +217,10 @@ function getUserInfo(){
         return $_SESSION['UserInfo'];
     return array();
 }
+
+function getNumCliente(){
+    if (isset($_SESSION['UserInfo'])) {
+        return $_SESSION['UserInfo']['IDCliente'];
+    }
+    return -1;
+}
