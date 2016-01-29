@@ -1,10 +1,5 @@
 <?php
 require_once("./application/inc/controllerInit.php");
-require_once("./application/models/autenticacao.model.php");
-require_once("./application/models/produtos.model.php");
-require_once("./application/models/carrinho.model.php");
-require_once("./application/models/clientes.moldel.php");
-require_once("./application/inc/viewUtils.php");
 
 $data = array();
 $infoCliente = array();

@@ -1,9 +1,5 @@
 <?php
 require_once("./application/inc/controllerInit.php");
-require_once("./application/models/autenticacao.model.php");
-require_once("./application/models/produtos.model.php");
-require_once("./application/models/carrinho.model.php");
-
 
 $orderby = 0;
 $calcTotalProdutos = 0;
@@ -14,7 +10,6 @@ $dataEntrada = 0;
 $produtosPorPagina = 10;
 $total = 0;
 $subTotal = 0;
-
 
 if (isset($_GET['ID']))
     $produtoID = $_GET['ID'];

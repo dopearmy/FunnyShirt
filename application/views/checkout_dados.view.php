@@ -45,12 +45,7 @@
                             $linha['UserID'];
                         }
                         ?>
-                        <?php if (isset($msgGlobal)) : ?>
-                            <div class="<?php echoAlertClass($tipoMsgGlobal); ?>">
-                                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                <strong><?php echoTipoMensagem($tipoMsgGlobal); ?></strong> <?php echo $msgGlobal; ?>
-                            </div>
-                        <?php endif; ?>
+                        
                     </div>
                     <!--/row end-->
 

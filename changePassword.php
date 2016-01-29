@@ -1,9 +1,5 @@
 <?php
 require_once("./application/inc/controllerInit.php");
-require_once("./application/models/autenticacao.model.php");
-require_once("./application/models/clientes.moldel.php");
-require_once("./application/models/produtos.model.php");
-require_once("./application/models/carrinho.model.php");
 
 // Variáveis usadas pelo do template
 $tituloPagina = "Editar Conta";
@@ -11,6 +7,7 @@ $data = array();
 $infoCliente = array();
 $msgErros = array();
 $dadosSubmetidos = false;
+$tipoMsgGlobal = "E";
 
 $IDCliente = 0;
 $nome = "";
@@ -19,6 +16,8 @@ $dataEntrada = 0;
 
 //IDCliente, Nome, NumContribuinte, Telefone, Endereco, DataNascimento, UserID 
 $infoCliente = getInfoCliente(getUserInfo()["UserID"]);
+
+$infoUser = getInfoUserByID(getUserInfo()["UserID"]);
 
 //Se não estiver logado redireciona para login.php
 if (isUserAnonimo()) {
@@ -40,12 +39,16 @@ if (!empty($_POST)) { // Formulário foi submetido - é um pedido POST
     $msgErros = validarChangePassword($data["senhaAtual"], $data["novaSenha1"], $data["novaSenha2"]);
     if (count($msgErros) > 0) {
         $msgGlobal = "Existem valores inválidos no formulário";
-        $tipoMsgGlobal = "A";
+        $_SESSION["flash_msgGlobal"] = $msgGlobal;
+        $tipoMsgGlobal = "E";
+        header("Location: opcoesConta.php?ID=".getUserInfo()["UserID"]);
     } else {
         if (!verificarSenha(getUserInfo()["UserID"], $data["senhaAtual"])) {
             $msgGlobal = "Senha atualantiga está incorreta";
             $_SESSION["flash_msgGlobal"] = $msgGlobal;
             $tipoMsgGlobal = "E";
+            
+            header("Location: opcoesConta.php?ID=".getUserInfo()["UserID"]);
         } else {
             if (alterarSenha(getUserInfo()["UserID"], $data["novaSenha1"])) {
                 $msgGlobal = "Senha alterada com sucesso";

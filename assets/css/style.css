@@ -484,7 +484,7 @@ input[type="text"], input[type="password"], input[type="email"] {
     border-radius: 3px;
     border-style: solid;
     border-width: 1px;
-    color: #888888;
+    color: #808080;
     font-size: 14px;
     margin-bottom: 10px;
     height: 36px;
@@ -6239,6 +6239,19 @@ span.field-error {
     margin-left: 50%;
 }
 
-/* Pagination style */
-
-
+.bg-color-green {
+background-color: #00CE6F;
+color: #fff;
+}
+.bg-color-blue {
+background-color: #A95DF0;
+color: #fff;
+}
+.bg-color-red {
+background-color: #DB0630;
+color: #fff;
+}
+.bg-color-brown {
+background-color: #B94A00;
+color: #fff;
+}

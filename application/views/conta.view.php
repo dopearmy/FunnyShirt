@@ -10,6 +10,12 @@
         <div class="col-lg-9 col-md-9 col-sm-7 col-center">
             <h1 class="section-title-inner">
                 <span><i class="fa fa-unlock-alt"></i>&nbsp;Bem-Vindo, <?php echo getUserInfo()['UserName'];?></span>
+                <?php if (isset($msgGlobal)) : ?>
+                    <div class="<?php echoAlertClass($tipoMsgGlobal); ?>">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong><?php echoTipoMensagem($tipoMsgGlobal); ?></strong> <?php echo $msgGlobal; ?>
+                    </div>
+                <?php endif; ?>
             </h1>
             <div class="row userInfo">
                 <div class="col-xs-12 col-sm-12">

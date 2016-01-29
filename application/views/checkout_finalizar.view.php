@@ -36,12 +36,6 @@
                 <div class="w100 clearfix">
                     <div class="row userInfo">
                         <div class="col-lg-12">
-                            <?php if (isset($msgGlobal)) : ?>
-                                <div class="<?php echoAlertClass($tipoMsgGlobal); ?>">
-                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                    <strong><?php echoTipoMensagem($tipoMsgGlobal); ?></strong> <?php echo $msgGlobal; ?>
-                                </div>
-                            <?php endif; ?>
                             <h2 class="block-title-2">Detalhes da Encomenda</h2>
                         </div>
                         <div class="col-xs-12 col-sm-12">

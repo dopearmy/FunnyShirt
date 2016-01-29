@@ -1,11 +1,6 @@
 <?php
-
 require_once("./application/inc/controllerInit.php");
-require_once("./application/models/autenticacao.model.php");
-require_once("./application/models/produtos.model.php");
-require_once("./application/models/carrinho.model.php");
-require_once("./application/models/clientes.moldel.php");
-require_once("./application/inc/viewUtils.php");
+
 
 $infoCliente = array();
 $msgErros = array();
@@ -53,6 +48,7 @@ if (empty($_GET)) { // Formulário não foi submetido - é um pedido GET
     } else {
         $msgGlobal = "Selecione uma opção de pagamento";
         $tipoMsgGlobal = "E";
+        $_GET['visa'] = "";
     }
 }
 

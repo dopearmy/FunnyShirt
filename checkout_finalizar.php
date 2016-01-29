@@ -1,11 +1,6 @@
 <?php
-
 require_once("./application/inc/controllerInit.php");
-require_once("./application/models/autenticacao.model.php");
-require_once("./application/models/produtos.model.php");
-require_once("./application/models/carrinho.model.php");
-require_once("./application/models/clientes.moldel.php");
-require_once("./application/inc/viewUtils.php");
+
 
 $infoCliente = array();
 $msgErros = array();
@@ -16,6 +11,7 @@ $total = $totalCarrinho;
 $numVisa = 0;
 $endereco = "";
 $entregue = 0;
+$msgGlobal = "";
 
 
 //IDCliente, Nome, NumContribuinte, Telefone, Endereco, DataNascimento, UserID 
@@ -32,22 +28,26 @@ if (isUserAnonimo()) {
     }
 }
 
+if (empty($_POST) || empty($_GET)) { // Formulário não foi submetido - é um pedido GET
+    if (isset($_SESSION["flash_msgGlobal"])) {
+        $msgGlobal = $_SESSION["flash_msgGlobal"];
+        unset($_SESSION["flash_msgGlobal"]);
+        $tipoMsgGlobal = $_SESSION["flash_tipoMsgGlobal"];
+    }
+}
+
 if (!isset($_SESSION['cart'])) {
     $_SESSION["flash_loginMessage"] = "Acesso Negado: O seu carrinho está vazio";
     $_SESSION["flash_loginRedirectTo"] = $_SERVER["REQUEST_URI"];
     exit(header("Location: carrinho_show.php"));
 }
 
-if (isset($_SESSION["flash_msgGlobal"])) {
-    $msgGlobal = $_SESSION["flash_msgGlobal"];
-    unset($_SESSION["flash_msgGlobal"]);
-    $tipoMsgGlobal = $_SESSION["flash_tipoMsgGlobal"];
-}
-
 if (!isset($_GET['visa']) || !isset($_GET['pagamento'])) {
     $_SESSION["flash_msgGlobal"] = "Selecione o metodo de pagamento";
+    $msgGlobal = $_SESSION["flash_msgGlobal"];
     $_SESSION["flash_tipoMsgGlobal"] = "E";
-    header('Location: checkout_pagamento.php');
+    $tipoMsgGlobal = $_SESSION["flash_tipoMsgGlobal"];
+    exit(header('Location: checkout_pagamento.php'));
 }
 
 if (!empty($_POST)) {

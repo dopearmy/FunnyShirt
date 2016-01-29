@@ -1,8 +1,6 @@
 <?php
 require_once("./application/inc/controllerInit.php");
-require_once("./application/models/autenticacao.model.php");
 require_once("./application/models/encomendas.model.php");
-require_once("./application/inc/viewUtils.php");
 
 $infoCliente = array();
 $msgErros = array();
@@ -25,7 +23,7 @@ if (isUserAnonimo()) {
     }
 }
 
-if(!isset($_GET['id'])){
+if(!isset($_GET) || empty($_GET['id'])){
     exit(header("Location: notFound.php"));
 }  else {
     $order = getOrderByID($_GET['id'], $idCliente);

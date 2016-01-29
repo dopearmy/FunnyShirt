@@ -1,6 +1,5 @@
 <?php
 require_once("./application/inc/controllerInit.php");
-require_once("./application/models/carrinho.model.php");
 
 if (isset($_GET["idProduto"])) {
     decQuantidadeCarrinho($_GET["idProduto"]);

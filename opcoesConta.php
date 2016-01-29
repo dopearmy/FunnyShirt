@@ -1,18 +1,20 @@
 <?php
 require_once("./application/inc/controllerInit.php");
-require_once("./application/models/autenticacao.model.php");
-require_once("./application/models/clientes.moldel.php");
-require_once("./application/models/produtos.model.php");
-require_once("./application/models/carrinho.model.php");
+
 
 // Variáveis usadas pelo do template
 $tituloPagina = "Editar Conta";
 $data = array();
 $infoCliente = array();
+$tipoUser = "";
 
+
+$data = null;
 
 //IDCliente, Nome, NumContribuinte, Telefone, Endereco, DataNascimento, UserID 
 $infoCliente = getInfoCliente(getUserInfo()["UserID"]);
+
+$infoUser = getInfoUserByID(getUserInfo()["UserID"]);
 
 //Se não estiver logado redireciona para login.php
 if (isUserAnonimo()) {
@@ -30,6 +32,56 @@ if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
         $msgGlobal = $_SESSION["flash_msgGlobal"];
         unset($_SESSION["flash_msgGlobal"]);
         $tipoMsgGlobal = "S";
+    }
+    if (isset($_SESSION['UserInfo'])){
+        if($_SESSION['UserInfo']['TipoUser'] == "G"){
+            $tipoUser = "Gestor";
+        } elseif ($_SESSION['UserInfo']['TipoUser'] == "C"){
+            $tipoUser = "Cliente";
+        } elseif ($_SESSION['UserInfo']['TipoUser'] == "F") {
+            $tipoUser = "Funcionário";
+        }
+    }
+}
+
+if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
+    $data = NULL;
+    if (isset($_GET["ID"])) {
+        if(isUserCliente()){
+            $data = getInfoCliente(getUserInfo()["UserID"]);
+        }elseif (isUserAdmin()) {
+            $data = getInfoUserByID(getUserInfo()["UserID"]);
+        }elseif (isUserAdmin()) {
+            $data = getInfoUserByID(getUserInfo()["UserID"]);
+        }elseif (isUserFuncionario()) {
+            $data = getInfoUserByID(getUserInfo()["UserID"]);
+        }
+        
+ 
+    }
+    if ($data == NULL || empty($_GET["ID"])) {
+        header("Location: notFound.php");
+        exit;
+    }
+} else if (!empty($_POST)) { // Formulário foi submetido - é um pedido POST
+    $dadosSubmetidos = true;
+    $data = $_POST;
+    //$nome, $nContribuinte, $telefone, $morada, $dataNasc
+    $msgErros = validarDadosCliente($data["nome"], $data["contribuinte"], $data["telefone"], $data["endereco"], $data["dataNasc"]);
+    if (count($msgErros) > 0) {
+        $msgGlobal = "Existem valores inválidos no formulário";
+        $tipoMsgGlobal = "A";
+    } else {
+        //$id, $nome, $nContribuinte, $telefone, $morada, $dataNasc
+        if (alterarDadosCliente(getUserInfo()["UserID"], $data["nome"], $data["contribuinte"], $data["telefone"], $data["endereco"], $data["dataNasc"])) {
+            $_SESSION["flash_msgGlobal"] = "Os dados foram alterados com sucesso";
+            $_SESSION["flash_tipoMsgGlobal"] = "S";
+            header("Location: opcoesConta.php?ID=".getUserInfo()["UserID"]);
+            exit;
+        } else {
+            $msgGlobal = "Houve um problema ao alterar os dados";
+            $tipoMsgGlobal = "E";
+        }
     }
 }
 
@@ -64,37 +116,6 @@ if (!empty($_POST)) { // Formulário foi submetido - é um pedido POST
         }
     }
 }
-
-if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
-    $data = NULL;
-    if (isset($_GET["ID"]))
-        $data = getInfoCliente(getUserInfo()["UserID"]);
-    if ($data == NULL || empty($_GET["ID"])) {
-        header("Location: notFound.php");
-        exit;
-    }
-} else if (!empty($_POST)) { // Formulário foi submetido - é um pedido POST
-    $dadosSubmetidos = true;
-    $data = $_POST;
-    //$nome, $nContribuinte, $telefone, $morada, $dataNasc
-    $msgErros = validarDadosCliente($data["nome"], $data["contribuinte"], $data["telefone"], $data["endereco"], $data["dataNasc"]);
-    if (count($msgErros) > 0) {
-        $msgGlobal = "Existem valores inválidos no formulário";
-        $tipoMsgGlobal = "A";
-    } else {
-        //$id, $nome, $nContribuinte, $telefone, $morada, $dataNasc
-        if (alterarDadosCliente(getUserInfo()["UserID"], $data["nome"], $data["contribuinte"], $data["telefone"], $data["endereco"], $data["dataNasc"])) {
-            $_SESSION["flash_msgGlobal"] = "Os dados foram alterados com sucesso";
-            $_SESSION["flash_tipoMsgGlobal"] = "S";
-            header("Location: opcoesConta.php");
-            exit;
-        } else {
-            $msgGlobal = "Houve um problema ao alterar os dados";
-            $tipoMsgGlobal = "E";
-        }
-    }
-}
-
 
 
 

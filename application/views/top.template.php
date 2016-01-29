@@ -66,9 +66,11 @@
                                         </li>
                                     <?php else: ?> 
                                         <?php if (isUserAdmin()): ?>
-                                        <li class="dropdown">
-                                            <a href="cp_index.php" ><span class="hidden-xs">
-                                                <i class="glyphicon glyphicon-edit"></i>&nbsp;Painel Administração&nbsp;</span>
+                                        <li>
+                                            <a href="cp_index.php">
+                                                <span class="hidden-xs" data-toggle="tooltip" data-placement="bottom" title="cPanel">
+                                                <i class="glyphicon glyphicon-edit"></i>&nbsp;Painel Administração&nbsp;
+                                                </span>
                                             </a>
                                         </li>
                                         <?php endif; ?>

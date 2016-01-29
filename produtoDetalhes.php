@@ -1,17 +1,15 @@
 <?php
-
 require_once("./application/inc/controllerInit.php");
-require_once("./application/models/autenticacao.model.php");
-require_once("./application/models/produtos.model.php");
-require_once("./application/models/carrinho.model.php");
+
 
 if (isset($_GET['ID']))
     $produtoID = $_GET['ID'];
 
-
 if (!isset($produtoID)) {
     exit(header("Location: notFound.php"));
 }
+
+
 //Devolve info produtos pelo id do produto
 $produtos = getInfoProdutoID($produtoID);
 

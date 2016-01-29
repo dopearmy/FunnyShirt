@@ -9,8 +9,8 @@
                         <span>Lista de Clientes</span>
                     </div>
                     <div class="panel-body">
-                        <div class= "table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="datatable-clientes">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" cellspacing="0" id="datatable-clientes">
                                 <thead>
                                     <tr>
                                         <th>ID Cliente</th>
@@ -19,7 +19,8 @@
                                         <th>Telefone</th>
                                         <th>Endereço</th>
                                         <th>Data Nasc</th>
-                                        <th>Acções</th>
+                                        <th>Edit</th>
+                                        <th>Del</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -32,8 +33,10 @@
                                         <td><?php echo $linha['Endereco'] ?></td>
                                         <td><?php echo $linha['DataNascimento'] ?></td>
                                         <td>
-                                            <a class='btn btn-info btn-sm' href='cp_clientes_editar.php?idCliente=<?php echo $linha['IDCliente'] ?>'><i class="fa fa-edit"></i></a>
-                                            <a class='btn btn-danger btn-sm' href='cp_clientes_remover.php?idCliente=<?php echo $linha['IDCliente'] ?>'><i class="fa fa-times"></i></a>
+                                            <a class='btn btn-info btn-xs' href='cp_clientes_editar.php?idCliente=<?php echo $linha['IDCliente'] ?>'><i class="fa fa-edit"></i></a>
+                                        </td>
+                                        <td>    
+                                            <a class='btn btn-danger btn-xs' href='cp_clientes_remover.php?idCliente=<?php echo $linha['IDCliente'] ?>'><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                     <?php } ?>

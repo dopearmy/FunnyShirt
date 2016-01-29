@@ -1,6 +1,5 @@
 <?php
 require_once("./application/inc/controllerInit.php");
-require_once("./application/models/carrinho.model.php");
 
 $qtd = 1;
 if(isset($_POST['quantidade'])){

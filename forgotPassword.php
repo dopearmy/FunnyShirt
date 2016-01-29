@@ -1,6 +1,5 @@
 <?php
 require_once("./application/inc/controllerInit.php");
-require_once("./application/models/autenticacao.model.php");
 
 $tituloPagina = "Recuperar Password";
 

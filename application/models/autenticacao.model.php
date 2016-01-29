@@ -15,6 +15,20 @@ function getInfoUser(){
 
 
 /*
+ * @return info de user by userID
+ * 
+ */
+function getInfoUserByID($userID){
+    $query= "SELECT UserID, UserName, Password, email, ativo FROM user WHERE UserID= ?";
+    $stmt = db()->prepare($query);
+    $stmt->bind_param("i", $userID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQL_ASSOC);
+}
+
+
+/*
  * @return recebe o username e devolve email
  * 
  */
@@ -207,9 +221,17 @@ function isUserAdmin(){
     return false;
 }
 
-function isUserAluno(){
-    if (isset($_SESSION['UserInfo']))
-        return $_SESSION['UserInfo']['tipouser']=='A';
+function isUserCliente(){
+    if (isset($_SESSION['UserInfo'])) {
+        return $_SESSION['UserInfo']['TipoUser'] == 'C';
+    }
+    return false;
+}
+
+function isUserFuncionario(){
+    if (isset($_SESSION['UserInfo'])) {
+        return $_SESSION['UserInfo']['TipoUser'] == 'F';
+    }
     return false;
 }
 
