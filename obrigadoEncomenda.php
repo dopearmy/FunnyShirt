@@ -1,10 +1,7 @@
 <?php
-
 require_once("./application/inc/controllerInit.php");
 require_once("./application/models/autenticacao.model.php");
-require_once("./application/models/produtos.model.php");
-require_once("./application/models/carrinho.model.php");
-require_once("./application/models/clientes.moldel.php");
+require_once("./application/models/encomendas.model.php");
 require_once("./application/inc/viewUtils.php");
 
 $infoCliente = array();
@@ -17,10 +14,6 @@ $numVisa = 0;
 $endereco = "";
 $entregue = 0;
 
-
-//IDCliente, Nome, NumContribuinte, Telefone, Endereco, DataNascimento, UserID 
-$infoCliente = getInfoCliente($userID);
-
 //Se não estiver logado redireciona para login.php
 if (isUserAnonimo()) {
     if (headers_sent()) {
@@ -32,14 +25,18 @@ if (isUserAnonimo()) {
     }
 }
 
-if (!isset($_SESSION['cart'])) {
-    $_SESSION["flash_loginMessage"] = "Acesso Negado: O seu carrinho está vazio";
-    $_SESSION["flash_loginRedirectTo"] = $_SERVER["REQUEST_URI"];
-    exit(header("Location: carrinho_show.php"));
+if(!isset($_GET['id'])){
+    exit(header("Location: notFound.php"));
+}  else {
+    $order = getOrderByID($_GET['id'], $idCliente);
+
+    //IDCliente, Nome, NumContribuinte, Telefone, Endereco, DataNascimento, UserID 
+    $infoCliente = getInfoCliente($userID);
 }
 
 
-$tituloPagina = "Finalizar Compra";
+
+$tituloPagina = "Obrigado pela sua Compra";
 
 require("./application/views/top.template.php");
 require("./application/views/obrigadoEncomenda.view.php");

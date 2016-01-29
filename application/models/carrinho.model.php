@@ -124,7 +124,7 @@ function confirmarCarrinho($idCliente, $numVisa, $endereco, $linhaEncomenda) {
     $total= getTotalCarrinho();
     try {
         db()->autocommit(false);
-        $stmt = db()->prepare('insert into encomenda (IDCliente, Data, Total, NumVisa, Endereco, Entregue) values (?,CURDATE(), ?,?,?,0)');
+        $stmt = db()->prepare('insert into encomenda (IDCliente, Data, Total, NumVisa, Endereco, Entregue) values (?,NOW(), ?,?,?,0)');
         $stmt->bind_param("idds", $idCliente, $total, $numVisa, $endereco);
         $stmt->execute();
 
@@ -132,23 +132,17 @@ function confirmarCarrinho($idCliente, $numVisa, $endereco, $linhaEncomenda) {
             throw new Exception('Não inseriu encomenda corretamente');
         }
         $idEncomenda = db()->insert_id;
-        $stmt = db()->prepare('insert into linhaencomenda (IDTShirt, Personalizada, IDImagemPersonalizada, Quantidade, Tamanho, PrecoUn) values (?, 0, null, ?, ?, ?)');
-        
-        var_dump("insert into linhaencomenda (IDTShirt, Personalizada, IDImagemPersonalizada, Quantidade, Tamanho, PrecoUn) values (?, 0, null, ?, ?, ?)");
-        //insert into linhaencomenda (IDTShirt, Personalizada, IDImagemPersonalizada, Quantidade, Tamanho, PrecoUn) values (64, 0, null, 4, 'm', 19.9900)
-        var_dump($linhaEncomenda);
+        $stmt = db()->prepare('insert into linhaencomenda (IDEncomenda, IDTShirt, Personalizada, IDImagemPersonalizada, Quantidade, Tamanho, PrecoUn) values (?, ?, 0, null, ?, ?, ?)');
         
         foreach ($linhaEncomenda as $key => $linha) {
             $preco = (float)$linha['Preco'];
-            $stmt->bind_param("iisd", $key, $linha['qtd'], $tamanho, $preco);
+            $stmt->bind_param("iiisd", $idEncomenda, $key, $linha['qtd'], $tamanho, $preco);
             var_dump($key);
             var_dump($linha['qtd']);
             var_dump($tamanho);
             var_dump($preco);
             $stmt->execute();
             if ($stmt->affected_rows != 1) {
-                echo "ERRORRRRRR";
-                exit();
                 throw new Exception('Não inseriu a encomenda corretamente');
             }
         }

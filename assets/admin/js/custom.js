@@ -1,15 +1,17 @@
 
-
 $(document).ready(function () {
     //DataTables
     $('#datatable-clientes').DataTable({
-        "iDisplayLength": 10,
-        "aLengthMenu": [[5, 10, 25, 50, -1], [5,10, 25, 50, "All"]],
+        "iDisplayLength": 5,
+        "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
         "oLanguage": {
             "sLengthMenu": "Mostrar _MENU_ entradas",
             "sSearch": "Procurar na Tabela: _INPUT_"
         },
-        "scrollX": true
+        "scrollX": true,
+        "columnDefs": [
+            {"orderable": false, "targets": 6}
+        ]
     });
 });
 
@@ -18,7 +20,6 @@ $(document).ready(function () {
 
     var mainApp = {
         main_fun: function () {
-            
             /*====================================
              LOAD APPROPRIATE MENU BAR
              ======================================*/
@@ -29,14 +30,10 @@ $(document).ready(function () {
                     $('div.sidebar-collapse').removeClass('collapse');
                 }
             });
-
-
         },
         initialization: function () {
             mainApp.main_fun();
-
         }
-
     };
     // Initializing ///
 

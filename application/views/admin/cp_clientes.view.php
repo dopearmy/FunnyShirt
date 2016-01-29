@@ -1,5 +1,3 @@
-
-
 <div id="page-wrapper">
     <div id="page-inner">
         <hr>
@@ -21,20 +19,24 @@
                                         <th>Telefone</th>
                                         <th>Endereço</th>
                                         <th>Data Nasc</th>
-                                        <th>User ID</th>
+                                        <th>Acções</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($clientes as $linha) { 
-                                        echo "<td>" . $linha['IDCliente'] . "</td>";
-                                        echo "<td>" . $linha['Nome'] . "</td>";
-                                        echo "<td>" . $linha['NumContribuinte'] . "</td>";
-                                        echo "<td>" . $linha['Telefone'] . "</td>";
-                                        echo "<td>" . $linha['Endereco'] . "</td>";
-                                        echo "<td>" . $linha['DataNascimento'] . "</td>";
-                                        echo "<td>" . $linha['UserID'] . "</td>";
-                                        echo "</tr>";
-                                    }?>
+                                    <tr>
+                                    <?php foreach ($clientes as $linha) { ?>
+                                        <td><?php echo $linha['IDCliente'] ?></td>
+                                        <td><?php echo $linha['Nome'] ?></td>
+                                        <td><?php echo $linha['NumContribuinte'] ?></td>
+                                        <td><?php echo $linha['Telefone'] ?></td>
+                                        <td><?php echo $linha['Endereco'] ?></td>
+                                        <td><?php echo $linha['DataNascimento'] ?></td>
+                                        <td>
+                                            <a class='btn btn-info btn-sm' href='cp_clientes_editar.php?idCliente=<?php echo $linha['IDCliente'] ?>'><i class="fa fa-edit"></i></a>
+                                            <a class='btn btn-danger btn-sm' href='cp_clientes_remover.php?idCliente=<?php echo $linha['IDCliente'] ?>'><i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
