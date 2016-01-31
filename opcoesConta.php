@@ -73,7 +73,7 @@ if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
         $tipoMsgGlobal = "A";
     } else {
         //$id, $nome, $nContribuinte, $telefone, $morada, $dataNasc
-        if (alterarDadosCliente(getUserInfo()["UserID"], $data["nome"], $data["contribuinte"], $data["telefone"], $data["endereco"], $data["dataNasc"])) {
+        if (alterarDadosCliente(getUserInfo()["UserID"], $data["nome"], $data["contribuinte"], $data["telefone"], $data["endereco"], date_format($dataNasc, 'Y-m-d H:i:s'))) {
             $_SESSION["flash_msgGlobal"] = "Os dados foram alterados com sucesso";
             $_SESSION["flash_tipoMsgGlobal"] = "S";
             header("Location: opcoesConta.php?ID=".getUserInfo()["UserID"]);

@@ -205,6 +205,45 @@ function validarChangePassword($senhaAtual, $novaSenha1, $novaSenha2){
     return $arrayMensagens; 
 }
 
+function validarDadosUser($username, $email, $estadoConta) {
+    $arrayMensagens = array();
+
+    if (trim($username) == "") {
+        $arrayMensagens["username"] = "Nome de Utilizador é Obrigatório";
+    }
+
+    if (trim($email) == "") {
+        $arrayMensagens["email"] = "Email é obrigatório";
+    } else
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+            $arrayMensagens["email"] = "Formato de email Inválido"; 
+    
+    if (strlen($estadoConta) != 1) {
+        $arrayMensagens["estadoConta"] = " Valor tem de ser 1 ou 0 (ativado = 1) (desativado = 0)";
+    } 
+
+    return $arrayMensagens;
+}
+
+function alterarDadosUser($UserID, $username, $email, $estadoConta) {
+    try {
+        $query = "UPDATE user SET UserName=?, email=?, ativo=? WHERE UserID=?";
+        $stmt = db()->prepare($query);
+        if (trim($dataNasc)=="")
+            $dataNasc = NULL;
+        $stmt->bind_param("ssii", $username, $email, $estadoConta, $UserID);
+        $stmt->execute();
+        // Nota: Se o update correu bem, a propriedade affected_rows deve ter os seguintes valores:
+        // 1 - foi alterado um registo
+        // 0 - a operação correu bem, mas não foi alterado nada (não afetou nenhum registo)
+        if ((db()->affected_rows > 1) || (db()->affected_rows < 0))
+            throw new Exception("Erro - algo se passou");
+    } catch (Exception $e) {
+        return false;
+    }
+    return true;
+}
+
 
 function isUserLogged(){
     return isset($_SESSION['UserInfo']);

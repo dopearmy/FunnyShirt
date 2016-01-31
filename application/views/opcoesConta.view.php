@@ -78,7 +78,7 @@
 
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 text-center">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> &nbsp; Guardar</button>
                                 </div>
                             </div>
@@ -91,21 +91,19 @@
     </div>
 </div>
 
-<?php elseif(!isUserCliente() && isUserLogged()): ?>
-
 <?php foreach ($infoUser as $linha) { ?>
 <div class="col-lg-6">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" href="#infoPessoal" class="collapseWill">
-                    Minha Informação Pessoal<span class="pull-left"><i class="fa fa-caret-right"></i></span>
+                <a data-toggle="collapse" href="#infoUser" class="collapseWill">
+                    Minha Informação Utilizador<span class="pull-left"><i class="fa fa-caret-right"></i></span>
                 </a>
             </h4>
         </div>
-        <div id="infoPessoal" class="panel-collapse collapse in">
+        <div id="infoUser" class="panel-collapse collapse in">
             <div class="panel-body">
-                <form class="form-horizontal" action="editDadosCliente.php" method="POST">
+                <form class="form-horizontal" action="editDadosUser.php" method="POST">
                     <fieldset>
                         <legend></legend>
                         <div class="col-lg-12">
@@ -119,38 +117,112 @@
                                 <div class="col-xs-12 col-sm-8">
                                     <div<?php echoClassformGroup('username', $msgErros, $dadosSubmetidos); ?>>
                                         <label for="idUserName">Nome Utilizador</label>
-                                        <input type="text" id="idUserName" name="username" value="<?php echo $linha['UserName']; ?>" class="form-control">
+                                        <input type="text" id="idUserName" name="username" value="<?php echo $linha['UserName']; ?>" <?php if(!isUserAdmin()) echo "disabled" ?> class="form-control">
                                     <?php echoMsgErro("username", $msgErros); ?>
                                     </div>    
                                     <div<?php echoClassformGroup('email', $msgErros, $dadosSubmetidos); ?>>
                                         <label for="idemail">Email</label>
-                                        <input type="email" id="idemail" name="email" value="<?php echo $linha['email']; ?>" class="form-control">
+                                        <input type="email" id="idemail" name="email" value="<?php echo $linha['email']; ?>" <?php if(!isUserAdmin()) echo "disabled" ?> class="form-control">
+                                    <?php echoMsgErro("contribuinte", $msgErros); ?>
+                                    </div>
+                                    <div<?php echoClassformGroup('tipoUser', $msgErros, $dadosSubmetidos); ?>>
+                                        <label for="idTipoUser">Grupo Utilizador</label>
+                                        <input type="text" id="idTipoUser" name="tipoUser" value="<?php echo $tipoUser ?>" <?php if(!isUserAdmin()) echo "disabled" ?> class="form-control">
+                                    <?php echoMsgErro("tipoUser", $msgErros); ?>
+                                    </div>
+                                    <div<?php echoClassformGroup('estadoConta', $msgErros, $dadosSubmetidos); ?>>
+                                        <label for="idActivo">Estado Conta</label>
+                                        <i>( (ativado = 1) (desativado = 0) )</i>
+                                        <input type="text" id="idActivo" name="estadoConta" value="<?php echo $linha['ativo'] ?>" <?php if(!isUserAdmin()) echo "disabled" ?> class="form-control">
+                                        <?php echoMsgErro("estadoConta", $msgErros); ?>
+                                        <?php 
+                                             if ($linha['ativo'] == 1) {
+                                                echo '<div class="alert alert-success">
+                                                    <strong><i class="fa fa-check-circle-o fa-3x"></i></strong> Conta de Utilizador Ativa!
+                                                </div>';
+                                            }else{
+                                                echo '<div class="alert alert-danger ">
+                                                    <strong><i class="fa fa-minus-circle fa-3x"></i></strong> Conta de Utilizador Deativada!
+                                                </div>';
+                                            }
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 text-center">
+                                    <button type="submit" class="btn btn-primary" <?php if(!isUserAdmin()) echo "style=visibility:hidden" ?>><i class="fa fa-save"></i> &nbsp; Guardar</button>
+                                    <div class="float-left"><?php if(!isUserAdmin()) echo "<i>*Contata um administrador para alterar a info de utilizador.</i>" ?></div>
+                                </div>
+                            </div>
+                        </div> 
+                    </fieldset>
+                </form>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php else: ?>
+
+<?php foreach ($infoUser as $linha) { ?>
+<div class="col-lg-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#infoUser" class="collapseWill">
+                    Minha Informação Utilizador<span class="pull-left"><i class="fa fa-caret-right"></i></span>
+                </a>
+            </h4>
+        </div>
+        <div id="infoUser" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <form class="form-horizontal" action="editDadosUser.php" method="POST">
+                    <fieldset>
+                        <legend></legend>
+                        <div class="col-lg-12">
+                            <h1 class="section-title-inner">
+                                <span><i class="glyphicon glyphicon-user"></i>Utilizador</span>
+                            </h1>
+                            <div class="row userInfo">
+                                <div class="col-lg-12">
+                                    <h2 class="block-title-2">Mantenha sempre os seus dados Atualizados!</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-8">
+                                    <div<?php echoClassformGroup('username', $msgErros, $dadosSubmetidos); ?>>
+                                        <label for="idUserName">Nome Utilizador</label>
+                                        <input type="text" id="idUserName" name="username" value="<?php echo $linha['UserName']; ?>" <?php if(!isUserAdmin()) echo "disabled" ?> class="form-control">
+                                    <?php echoMsgErro("username", $msgErros); ?>
+                                    </div>    
+                                    <div<?php echoClassformGroup('email', $msgErros, $dadosSubmetidos); ?>>
+                                        <label for="idemail">Email</label>
+                                        <input type="email" id="idemail" name="email" value="<?php echo $linha['email']; ?>" <?php if(!isUserAdmin()) echo "disabled" ?> class="form-control">
                                     <?php echoMsgErro("contribuinte", $msgErros); ?>
                                     </div>
                                     <div<?php echoClassformGroup('tipoUser', $msgErros, $dadosSubmetidos); ?>>
                                         <label for="idTelefone">Grupo Utilizador</label>
-                                        <input type="text" id="idTelefone" name="tipoUser" value="<?php echo $tipoUser ?>" class="form-control">
+                                        <input type="text" id="idTelefone" name="tipoUser" value="<?php echo $tipoUser ?>" class="form-control" disabled>
+                                        
                                     <?php echoMsgErro("tipoUser", $msgErros); ?>
                                     </div>
-                                    <div<?php echoClassformGroup('tipoUser', $msgErros, $dadosSubmetidos); ?>>
-                                        <label for="idTelefone">Estado Conta</label>
+                                    <div<?php echoClassformGroup('estadoConta', $msgErros, $dadosSubmetidos); ?>>
+                                        <label for="idActivo">Estado Conta</label>
                                         <i>( (ativado = 1) (desativado = 0) )</i>
-                                        <input type="text" id="idTelefone" name="tipoUser" value="<?php echo $linha['ativo'] ?>" <?php if(!isUserAdmin()) echo "disabled" ?> class="form-control">
+                                        <input type="text" id="idActivo" name="estadoConta" value="<?php echo $linha['ativo'] ?>" <?php if(!isUserAdmin()) echo "disabled" ?> class="form-control">
+                                        <?php echoMsgErro("estadoConta", $msgErros); ?>
                                         <?php 
                                              if ($linha['ativo'] == 1) {
                                                 echo '<div class="alert alert-success">
-                                                    <strong><i class="fa fa-check-circle-o fa-3x"></i></strong> Conta verificada!
+                                                    <strong><i class="fa fa-check-circle-o fa-3x"></i></strong> Conta de Utilizador Ativa!
                                                 </div>';
                                             }else{
                                                 echo '<div class="alert alert-danger ">
-                                                    <strong><i class="fa fa-minus-circle fa-3x"></i></strong> Conta Deativada!
+                                                    <strong><i class="fa fa-minus-circle fa-3x"></i></strong> Conta de Utilizador Deativada!
                                                 </div>';
                                             }
                                         ?>
-                                    <?php echoMsgErro("tipoUser", $msgErros); ?>
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 text-center">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> &nbsp; Guardar</button>
                                 </div>
                             </div>
@@ -163,9 +235,10 @@
     </div>
 </div>
 
+
 <?php endif; ?>
 
-<div class="col-lg-6">
+<div class="col-lg-6 float-left" <?php if(isUserCliente()) echo 'style="clear:both"'?>>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
@@ -195,7 +268,7 @@
                                 <input type="password" id="idSenhaConf" name="novaSenha2"<?php echoFieldValue("novaSenha2", $data); ?>class="form-control" placeholder="Confimar Senha">
                             <?php echoMsgErro("senha", $msgErros); ?>
                             </div>
-                            <div class="text-center"> 
+                            <div class="col-lg-12 text-center"> 
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> &nbsp; Guardar</button>
                             </div>
                         </div>
