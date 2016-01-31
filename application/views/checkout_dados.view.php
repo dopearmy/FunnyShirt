@@ -85,7 +85,7 @@
                                             <?php echoMsgErro("dataNasc", $msgErros); ?>
                                         </div>
                                         <div class="form-group">
-                                            <a class="btn btn-primary btn-small " href="opcoesConta.php?ID=opcoesConta.php?ID=<?php echo getUserInfo()["UserID"];?>">
+                                            <a class="btn btn-primary btn-small " href="conta_opcoes.php?ID=conta_opcoes.php?ID=<?php echo getUserInfo()["UserID"];?>">
                                            Atualizar Dados&nbsp; <i class="fa fa-edit"></i> </a>
                                         </div>
                                     </div>

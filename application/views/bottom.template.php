@@ -155,6 +155,10 @@
 <!-- Include custom script datatables forms  -->
 <script src="http://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 
+<!-- include footable plugin -->
+<script src="assets/js/footable.js" type="text/javascript"></script>
+<script src="assets/js/footable.sortable.js" type="text/javascript"></script>
+
 <!-- Include custom script site  -->
 <script src="assets/js/script.js"></script>
 

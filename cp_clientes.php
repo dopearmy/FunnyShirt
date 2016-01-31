@@ -17,7 +17,7 @@ require_once("./application/models/clientes.moldel.php");
 $clientes = getInfoClientes();
 
 // Variáveis usadas pelo do template
-$tituloPagina = "Painel Admin";
+$tituloPagina = "Clientes";
 
 require("./application/views/admin/top.template.php");
 require("./application/views/admin/cp_clientes.view.php");

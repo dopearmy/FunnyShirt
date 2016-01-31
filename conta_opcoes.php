@@ -76,7 +76,7 @@ if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
         if (alterarDadosCliente(getUserInfo()["UserID"], $data["nome"], $data["contribuinte"], $data["telefone"], $data["endereco"], date_format($dataNasc, 'Y-m-d H:i:s'))) {
             $_SESSION["flash_msgGlobal"] = "Os dados foram alterados com sucesso";
             $_SESSION["flash_tipoMsgGlobal"] = "S";
-            header("Location: opcoesConta.php?ID=".getUserInfo()["UserID"]);
+            header("Location: conta_opcoes.php?ID=".getUserInfo()["UserID"]);
             exit;
         } else {
             $msgGlobal = "Houve um problema ao alterar os dados";
@@ -120,5 +120,5 @@ if (!empty($_POST)) { // Formulário foi submetido - é um pedido POST
 
 
 require("./application/views/top.template.php");
-require("./application/views/opcoesConta.view.php");
+require("./application/views/conta_opcoes.view.php");
 require("./application/views/bottom.template.php");

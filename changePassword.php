@@ -41,21 +41,21 @@ if (!empty($_POST)) { // Formulário foi submetido - é um pedido POST
         $msgGlobal = "Existem valores inválidos no formulário";
         $_SESSION["flash_msgGlobal"] = $msgGlobal;
         $tipoMsgGlobal = "E";
-        header("Location: opcoesConta.php?ID=".getUserInfo()["UserID"]);
+        header("Location: conta_opcoes.php?ID=".getUserInfo()["UserID"]);
     } else {
         if (!verificarSenha(getUserInfo()["UserID"], $data["senhaAtual"])) {
             $msgGlobal = "Senha atualantiga está incorreta";
             $_SESSION["flash_msgGlobal"] = $msgGlobal;
             $tipoMsgGlobal = "E";
             
-            header("Location: opcoesConta.php?ID=".getUserInfo()["UserID"]);
+            header("Location: conta_opcoes.php?ID=".getUserInfo()["UserID"]);
         } else {
             if (alterarSenha(getUserInfo()["UserID"], $data["novaSenha1"])) {
                 $msgGlobal = "Senha alterada com sucesso";
                 $_SESSION["flash_msgGlobal"] = $msgGlobal;
                 $tipoMsgGlobal = "S";
                 $data = array();
-                header("Location: opcoesConta.php?ID=".getUserInfo()["UserID"]);
+                header("Location: conta_opcoes.php?ID=".getUserInfo()["UserID"]);
             } else {
                 $msgGlobal = "Ocorreu um erro ao alterar a senha";
                 $_SESSION["flash_msgGlobal"] = $msgGlobal;
@@ -67,5 +67,5 @@ if (!empty($_POST)) { // Formulário foi submetido - é um pedido POST
 
 
 require("./application/views/top.template.php");
-require("./application/views/opcoesConta.view.php");
+require("./application/views/conta_opcoes.view.php");
 require("./application/views/bottom.template.php");

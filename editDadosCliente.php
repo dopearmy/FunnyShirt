@@ -53,7 +53,7 @@ if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
             $_SESSION["flash_msgGlobal"] = "Os dados foram alterados com sucesso";
             $_SESSION["flash_tipoMsgGlobal"] = "S";
             $tipoMsgGlobal = "S";
-            header("Location: opcoesConta.php?ID=".getUserInfo()["UserID"]);
+            header("Location: conta_opcoes.php?ID=".getUserInfo()["UserID"]);
             exit;
         } else {
             $msgGlobal = "Houve um problema ao alterar os dados";
@@ -66,5 +66,5 @@ if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
 
 
 require("./application/views/top.template.php");
-require("./application/views/opcoesConta.view.php");
+require("./application/views/conta_opcoes.view.php");
 require("./application/views/bottom.template.php");

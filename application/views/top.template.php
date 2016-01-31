@@ -32,9 +32,14 @@
 
         <!-- gall-item Gallery for gallery page -->
         <link href="assets/plugins/magnific/magnific-popup.css" rel="stylesheet">
+        
+        <!-- styles needed by footable  -->
+        <link href="assets/css/footable-0.1.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/footable.sortable-0.1.css" rel="stylesheet" type="text/css"/>
 
         <!-- Include PACE script for automatic web page progress bar -->
         <script src="assets/js/pace.min.js"></script>
+        
     </head>
 
     <body>

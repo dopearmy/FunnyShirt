@@ -28,22 +28,12 @@
                     <ul class="myAccountList row">
                         <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 text-center ">
                             <div class="thumbnail equalheight">
-                                <a title="Histórico de Compras" href="order-list.html"><i class="fa fa-calendar"></i>&nbsp;Histórico</a>
-                            </div>
-                        </li>
-                        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 text-center ">
-                            <div class="thumbnail equalheight">
-                                <a title="Minha Morada" href="my-address.html"><i class="fa fa-map-marker"></i>&nbsp;Morada</a>
-                            </div>
-                        </li>
-                        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 text-center ">
-                            <div class="thumbnail equalheight">
-                                <a title="Adicionar Nova Morada" href="add-address.html"><i class="fa fa-edit"> </i>&nbsp;Add Morada</a>
+                                <a title="Histórico de Compras" href="conta_encomendas.php"><i class="fa fa-calendar"></i>&nbsp;Encomendas</a>
                             </div>
                         </li>
                         <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 text-center">
                             <div class="thumbnail equalheight">
-                                <a title="Personal information" href="opcoesConta.php?ID=<?php echo getUserInfo()["UserID"]; ?>"><i class="fa fa-cog"></i>&nbsp;Settings</a>
+                                <a title="Personal information" href="conta_opcoes.php?ID=<?php echo getUserInfo()["UserID"]; ?>"><i class="fa fa-cog"></i>&nbsp;Settings</a>
                             </div>
                         </li>
                         <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 text-center ">
