@@ -44,7 +44,7 @@ $(document).ready(function () {
     /*==================================
      Data nascimento
      ====================================*/
-    var d= $('#defaultDateNasc').val();
+    var d = $('#defaultDateNasc').val();
             
     $('#datePicker').datepicker({
         dateFormat: 'dd/mm/yy',
@@ -55,10 +55,15 @@ $(document).ready(function () {
         monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
         nextText: 'Próximo',
         prevText: 'Anterior',
-        value: '01/01/15'
+        changeMonth: true,
+        changeYear: true
     });
     
     $('#datePicker').datepicker().val(d);
+    
+
+
+  
 });
 
 (function ($) {

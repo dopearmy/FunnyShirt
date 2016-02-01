@@ -39,6 +39,7 @@ if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
         exit;
     }
 } else if (!empty($_POST)) { // Formulário foi submetido - é um pedido POST
+    $IDCliente = (int)$_POST['IDCliente'];
     $dadosSubmetidos = true;
     $data = $_POST;
     var_dump($data);
@@ -52,15 +53,16 @@ if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
     } else {
         //$id, $nome, $nContribuinte, $telefone, $morada, $dataNasc
         $dataNasc = date_create($data["dataNasc"]);
-        if (alterarDadosCliente(getUserInfo()["UserID"], $data["nome"], $data["contribuinte"], $data["telefone"], $data["endereco"],  date_format($dataNasc, 'Y/m/d'))) {
+        if (alterarDadosCliente($IDCliente, $data["nome"], $data["contribuinte"], $data["telefone"], $data["endereco"],  date_format($dataNasc, 'Y/m/d'))) {
             $_SESSION["flash_msgGlobal"] = "Os dados foram alterados com sucesso";
             $_SESSION["flash_tipoMsgGlobal"] = "S";
             $tipoMsgGlobal = "S";
-            header("Location: conta_opcoes.php?ID=".getUserInfo()["UserID"]);
+            header("Location: cp_clientes_editar.php?ID=".$IDCliente);
             exit;
         } else {
             $msgGlobal = "Houve um problema ao alterar os dados";
             $tipoMsgGlobal = "E";
+            header("Location: cp_clientes_editar.php?ID=".$IDCliente);
         }
     }
 }

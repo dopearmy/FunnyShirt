@@ -40,14 +40,15 @@ if (!empty($_POST)) { // Formulário foi submetido - é um pedido POST
     if (count($msgErros) > 0) {
         $msgGlobal = "Existem valores inválidos no formulário";
         $_SESSION["flash_msgGlobal"] = $msgGlobal;
-        $tipoMsgGlobal = "E";
+        $tipoMsgGlobal = "A";
+        $_SESSION["tipoMsgGlobal"] = $tipoMsgGlobal;
         header("Location: conta_opcoes.php?ID=".getUserInfo()["UserID"]);
     } else {
         if (!verificarSenha(getUserInfo()["UserID"], $data["senhaAtual"])) {
-            $msgGlobal = "Senha atualantiga está incorreta";
+            $msgGlobal = "Senha atual/antiga está incorreta";
             $_SESSION["flash_msgGlobal"] = $msgGlobal;
             $tipoMsgGlobal = "E";
-            
+            $_SESSION["tipoMsgGlobal"] = $tipoMsgGlobal;
             header("Location: conta_opcoes.php?ID=".getUserInfo()["UserID"]);
         } else {
             if (alterarSenha(getUserInfo()["UserID"], $data["novaSenha1"])) {

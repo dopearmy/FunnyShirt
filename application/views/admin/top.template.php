@@ -45,12 +45,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php $_SERVER['PHP_SELF'] ?>">Painel Admin</a> 
+                    <a class="navbar-brand" href="cp_index.php"><i class="fa fa-cog">&nbsp;</i>cPANEL</a> 
                 </div>
-                <div style="color: white;
-                     padding: 15px 50px 5px 50px;
-                     float: right;
-                     font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> 
+                
+                <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
+                    
+                    <?php echo "Útima Visita: " . (new DateTime())->format('(Y-m-d) H:i'); ?> &nbsp;
+                    <a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a> 
                 </div>
             </nav>
             <!-- /. NAV TOP  -->
@@ -59,6 +60,8 @@
                     <ul class="nav" id="main-menu">
                         <li class="text-center">
                             <img src="assets/admin/img/find_user.png" class="user-image img-responsive"/>
+                            <a href="index.php" target="_blank" class="btn btn-danger"><i class="fa fa-shopping-cart"></i>IR PARA LOJA</a>
+                            <br>
                         </li>
                         <li>
                             <a <?php if($page == "cp_index.php") echo 'class="active-menu"'?>  href="cp_index.php"><i class="fa fa-desktop fa-3x"></i> Dashboard</a>

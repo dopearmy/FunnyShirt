@@ -742,7 +742,9 @@ $(document).ready(function () {
         monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
         nextText: 'Próximo',
         prevText: 'Anterior',
-        value: '01/01/15'
+        value: '01/01/15',
+        changeMonth: true,
+        changeYear: true
     });
     
     $('#datePicker').datepicker().val(d);

@@ -1,9 +1,12 @@
 <div id="page-wrapper">
     <div id="page-inner">
-        <hr>
-        <div class="row">
             <div class = "col-md-12">
-                <?php var_dump($clientes); ?>
+                <?php if (isset($msgGlobal)) : ?>
+                        <div class="<?php echoAlertClass($tipoMsgGlobal); ?>">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong><?php echoTipoMensagem($tipoMsgGlobal); ?></strong> <?php echo $msgGlobal; ?>
+                        </div>
+                    <?php endif; ?>
                 <!--Advanced Tables -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -12,9 +15,9 @@
                     <div class="col-md-6">
                         <h3>Dados do Cliente</h3>
                         <?php foreach ($clientes as $linha) { ?>
-                            <form class="form-horizontal" action="editDadosCliente.php" method="POST">
-                                <input type="hidden" value="<?php $data = date_create($linha['DataNascimento']);
-                                echo date_format($data, "d/m/Y") ?>" id="defaultDateNasc">
+                            <form class="form-horizontal" action="cp_editDadosCliente.php" method="POST">
+                                <input type="hidden" value="<?php $data = date_create($linha['DataNascimento']); echo date_format($data, "d/m/Y") ?>" id="defaultDateNasc">
+                                <input type="hidden" value="<?php echo (int)$_GET['ID']?>" name="IDCliente" id="idCliente">
                                 <fieldset>
                                     <legend></legend>
                                     <div class="col-lg-12">
@@ -57,7 +60,6 @@
                                 </fieldset>
                             </form>
                         <?php } ?>
-                        
                     </div>
                 </div>
                 <!--End Advanced Tables -->

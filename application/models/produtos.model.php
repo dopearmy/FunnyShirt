@@ -1,5 +1,4 @@
 <?php
-
 require_once("./application/inc/db.php");
 require_once("./application/inc/dbUtils.php");
 require_once("./application/inc/paginacao.php");

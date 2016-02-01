@@ -70,17 +70,7 @@ if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
     if (count($msgErros) > 0) {
         $msgGlobal = "Existem valores inválidos no formulário";
         $tipoMsgGlobal = "A";
-    } else {
-        //$id, $nome, $nContribuinte, $telefone, $morada, $dataNasc
-        if (alterarDadosCliente(getUserInfo()["UserID"], $data["nome"], $data["contribuinte"], $data["telefone"], $data["endereco"], date_format($dataNasc, 'Y-m-d H:i:s'))) {
-            $_SESSION["flash_msgGlobal"] = "Os dados foram alterados com sucesso";
-            $_SESSION["flash_tipoMsgGlobal"] = "S";
-            header("Location: conta_opcoes.php?ID=".getUserInfo()["UserID"]);
-            exit;
-        } else {
-            $msgGlobal = "Houve um problema ao alterar os dados";
-            $tipoMsgGlobal = "E";
-        }
+        $_SESSION["tipoMsgGlobal"] = $tipoMsgGlobal;
     }
 }
 
@@ -95,23 +85,12 @@ if (!empty($_POST)) { // Formulário foi submetido - é um pedido POST
         $msgGlobal = "Existem valores inválidos no formulário";
         $_SESSION["flash_msgGlobal"] = $msgGlobal;
         $tipoMsgGlobal = "A";
+        $_SESSION["tipoMsgGlobal"] = $tipoMsgGlobal;
     } else {
         if (!verificarSenha(getUserInfo()["UserID"], $data["senhaAtual"])) {
             $msgGlobal = "Senha atual/antiga está incorreta";
             $_SESSION["flash_msgGlobal"] = $msgGlobal;
             $tipoMsgGlobal = "E";
-        } else {
-            if (alterarSenha(getUserInfo()["UserID"], $data["novaSenha1"])) {
-                $msgGlobal = "Senha alterada com sucesso";
-                $_SESSION["flash_msgGlobal"] = $msgGlobal;
-                $tipoMsgGlobal = "S";
-                $_SESSION["tipoMsgGlobal"] = $tipoMsgGlobal;
-                $data = array();
-            } else {
-                $msgGlobal = "Ocorreu um erro ao alterar a senha";
-                $_SESSION["flash_msgGlobal"] = $msgGlobal;
-                $tipoMsgGlobal = "E";
-            }
         }
     }
 }

@@ -40,6 +40,26 @@ function getInfoClienteByClienteID($clienteID) {
     return $result->fetch_all(MYSQL_ASSOC);
 }
 
+
+/*
+ * Apagar cliente pelo IDCliente
+ * 
+ */
+
+function apagarCliente($IDCliente) {
+    $query = "DELETE FROM cliente WHERE IDCliente = ?";
+    $stmt = db()->prepare($query);
+    $stmt->bind_param("i", $IDCliente);
+    $stmt->execute();
+    $result = $stmt->get_result();
+}
+
+
+/*
+ * 
+ * 
+ */
+
 function validarDadosCliente($nome, $nContribuinte, $telefone, $morada, $dataNasc) {
     $arrayMensagens = array();
 
