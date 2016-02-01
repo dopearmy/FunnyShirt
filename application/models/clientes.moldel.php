@@ -25,6 +25,21 @@ function getInfoCliente($userID) {
     return $result->fetch_all(MYSQL_ASSOC);
 }
 
+
+/*
+ * @return info de cliente por clienteID
+ * 
+ */
+
+function getInfoClienteByClienteID($clienteID) {
+    $query = "SELECT * FROM cliente WHERE IDCliente = ?";
+    $stmt = db()->prepare($query);
+    $stmt->bind_param("i", $clienteID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQL_ASSOC);
+}
+
 function validarDadosCliente($nome, $nContribuinte, $telefone, $morada, $dataNasc) {
     $arrayMensagens = array();
 

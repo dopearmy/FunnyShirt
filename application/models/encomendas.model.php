@@ -6,6 +6,20 @@ require_once("./application/inc/parametros.php");
 
 
 /*
+ * @return todas as encomendas
+ * 
+ */
+
+function getOrders() {
+    $query = "SELECT * FROM encomenda";
+    $stmt = db()->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQL_ASSOC);
+}
+
+
+/*
  * @return info encomenda WHERE IDEncomenda= xxx AND IDCliente= xxx
  * 
  */

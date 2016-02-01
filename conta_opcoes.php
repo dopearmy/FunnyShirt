@@ -56,8 +56,7 @@ if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
         }elseif (isUserFuncionario()) {
             $data = getInfoUserByID(getUserInfo()["UserID"]);
         }
-        
- 
+
     }
     if ($data == NULL || empty($_GET["ID"])) {
         header("Location: notFound.php");

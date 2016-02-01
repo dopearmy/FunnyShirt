@@ -1,9 +1,8 @@
 <?php
-require_once("./application/models/autenticacao.model.php");
-require_once("./application/models/clientes.moldel.php");
+require_once("./application/inc/controllerInit.php");
 
-$page = "cp_clientes.php";
-$clientes = array();
+$page = "cp_produtos.php";
+$produtos = array();
 
 //Se não estiver logado redireciona para login.php
 //if (!isUserAdmin()) {
@@ -16,11 +15,11 @@ $clientes = array();
 //    }
 //}
 
-$clientes = getInfoClientes();
+$produtos = getInfoProduto();
 
 // Variáveis usadas pelo do template
-$tituloPagina = "Clientes";
+$tituloPagina = "Produtos";
 
 require("./application/views/admin/top.template.php");
-require("./application/views/admin/cp_clientes.view.php");
+require("./application/views/admin/cp_produtos.view.php");
 require("./application/views/admin/bottom.template.php");

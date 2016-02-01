@@ -61,19 +61,19 @@
                             <img src="assets/admin/img/find_user.png" class="user-image img-responsive"/>
                         </li>
                         <li>
-                            <a class="active-menu"  href="index.html"><i class="fa fa-desktop fa-3x"></i> Dashboard</a>
+                            <a <?php if($page == "cp_index.php") echo 'class="active-menu"'?>  href="cp_index.php"><i class="fa fa-desktop fa-3x"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="ui.html"><i class="fa fa-tags fa-3x"></i> Produtos</a>
+                            <a <?php if($page == "cp_produtos.php") echo 'class="active-menu"'?> href="cp_produtos.php"><i class="fa fa-tags fa-3x"></i> Produtos</a>
                         </li>
                         <li>
-                            <a href="tab-panel.html"><i class="fa fa-credit-card fa-3x"></i> Encomendas</a>
+                            <a <?php if($page == "cp_encomendas.php") echo 'class="active-menu"'?> href="cp_encomendas.php"><i class="fa fa-credit-card fa-3x"></i> Encomendas</a>
                         </li>
                         <li>
-                            <a href="cp_clientes.php"><i class="fa fa-users fa-3x"></i> Clientes</a>
-                        </li>	
+                            <a <?php if($page == "cp_clientes.php") echo 'class="active-menu"'?> href="cp_clientes.php"><i class="fa fa-users fa-3x"></i> Clientes</a>
+                        </li>
                         <li>
-                            <a href="table.html"><i class="fa fa-cogs fa-3x"></i> Opções</a>
+                            <a <?php if($page == "cp_opcoes.php") echo 'class="active-menu"'?> href="cp_opcoes.php"><i class="fa fa-cogs fa-3x"></i> Opções</a>
                         </li>
                     </ul>
                 </div>

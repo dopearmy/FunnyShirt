@@ -8,11 +8,57 @@ $(document).ready(function () {
             "sLengthMenu": "Mostrar _MENU_ entradas",
             "sSearch": "Procurar na Tabela: _INPUT_"
         },
-        "scrollX": true,
         "columnDefs": [
             {"orderable": false, "targets": 6}
         ]
     });
+    
+    $('#datatable-encomendas').DataTable({
+        "iDisplayLength": 5,
+        "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+        "oLanguage": {
+            "sLengthMenu": "Mostrar _MENU_ entradas",
+            "sSearch": "Procurar na Tabela: _INPUT_"
+        },
+        "columnDefs": [{
+                "orderable": false, 
+                "targets": [6,7]
+            }
+        ]
+    });
+    
+    $('#datatable-produtos').DataTable({
+        "iDisplayLength": 5,
+        "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+        "oLanguage": {
+            "sLengthMenu": "Mostrar _MENU_ entradas",
+            "sSearch": "Procurar na Tabela: _INPUT_"
+        },
+        "columnDefs": [{
+                "orderable": false, 
+                "targets": []
+            }
+        ]
+    });
+    
+    /*==================================
+     Data nascimento
+     ====================================*/
+    var d= $('#defaultDateNasc').val();
+            
+    $('#datePicker').datepicker({
+        dateFormat: 'dd/mm/yy',
+        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+        dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+        nextText: 'Próximo',
+        prevText: 'Anterior',
+        value: '01/01/15'
+    });
+    
+    $('#datePicker').datepicker().val(d);
 });
 
 (function ($) {

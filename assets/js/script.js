@@ -729,7 +729,7 @@ $(document).ready(function () {
     
 
     /*==================================
-     Pagination
+     Data nascimento
      ====================================*/
     var d= $('#defaultDateNasc').val();
             

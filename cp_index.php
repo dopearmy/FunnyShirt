@@ -2,6 +2,7 @@
 require_once("./application/inc/controllerInit.php");
 require_once("./application/models/autenticacao.model.php");
 
+$page = "cp_index.php";
 
 //Se não estiver logado redireciona para login.php
 if (!isUserAdmin()) {
