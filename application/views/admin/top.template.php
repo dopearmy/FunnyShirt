@@ -68,6 +68,12 @@
                         </li>
                         <li>
                             <a <?php if($page == "cp_produtos.php") echo 'class="active-menu"'?> href="cp_produtos.php"><i class="fa fa-tags fa-3x"></i> Produtos</a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a <?php if($page == "cp_tshirts_person.php") echo 'class="active-menu"'?> href="cp_tshirts_person.php">T-shirts Personalizadas</a>
+                                </li>
+                                                            
+                            </ul>
                         </li>
                         <li>
                             <a <?php if($page == "cp_encomendas.php") echo 'class="active-menu"'?> href="cp_encomendas.php"><i class="fa fa-credit-card fa-3x"></i> Encomendas</a>

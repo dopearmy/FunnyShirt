@@ -25,5 +25,4 @@ if($_SESSION['UserInfo']['UserID'] == $userID){
 
 require("./application/views/top.template.php");
 require("./application/views/conta_encomendas.view.php");
-var_dump($ordersCliente);
 require("./application/views/bottom.template.php");

@@ -2,11 +2,11 @@
     <div id="page-inner">
             <div class = "col-md-12">
                 <?php if (isset($msgGlobal)) : ?>
-                        <div class="<?php echoAlertClass($tipoMsgGlobal); ?>">
-                            <a href="#" class="close" data-dismiss="alert">&times;</a>
-                            <strong><?php echoTipoMensagem($tipoMsgGlobal); ?></strong> <?php echo $msgGlobal; ?>
-                        </div>
-                    <?php endif;?>
+                    <div class="<?php echoAlertClass($tipoMsgGlobal); ?>">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong><?php echoTipoMensagem($tipoMsgGlobal); ?></strong> <?php echo $msgGlobal; ?>
+                    </div>
+                <?php endif;?>
                 <!--Advanced Tables -->
                 <div class="panel panel-default">
                     <div class="panel-heading">

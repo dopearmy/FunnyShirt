@@ -1,6 +1,7 @@
 <?php
 require_once("./application/inc/controllerInit.php");
-require_once("./application/models/autenticacao.model.php");
+require_once("./application/models/encomendas.model.php");
+
 
 $page = "cp_index.php";
 
@@ -11,6 +12,9 @@ if (!isUserAdmin()) {
     exit(header("Location: login.php"));
 }
 
+$totalClientes = count(getInfoClientes());
+$totalOrders = count(getOrders());
+$totalProdutos = count(getInfoProduto());
 
 
 

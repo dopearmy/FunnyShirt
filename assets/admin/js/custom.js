@@ -73,6 +73,27 @@ $(document).ready(function () {
     
     $('#datePicker').datepicker().val(d);
     
+    /*==================================
+     Data Entrada
+     ====================================*/
+    var d = $('#defaultDateEntrada').val();
+            
+    $('#datePickerEntrada').datepicker({
+        dateFormat: 'yy/mm/dd',
+        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+        dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+        nextText: 'Próximo',
+        prevText: 'Anterior',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '1900:+0'
+    });
+    
+    $('#datePickerEntrada').datepicker().val(d);
+    
   
 });
 

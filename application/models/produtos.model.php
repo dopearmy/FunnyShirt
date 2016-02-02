@@ -76,6 +76,62 @@ function getProdutosPage($posicaoPag, $itensPorPag) {
     return $result->fetch_all(MYSQL_ASSOC);
 }
 
+
+function validarDadosProdutos($nome, $preco) {
+    $arrayMensagens = array();
+
+    if (trim($nome) == "") {
+        $arrayMensagens["Nome"] = "Nome é Obrigatório";
+    }
+
+    if (trim($preco) == "") {
+        $arrayMensagens["preco"] = "Preço é obrigatório";
+    } else
+    if (!is_numeric($preco)) {
+        $arrayMensagens["telefone"] = "O preço tem ser um número!";
+    }
+
+    return $arrayMensagens;
+}
+
+
+/*
+ * Alterar dados produtos
+ * 
+ */
+
+function alterarDadosProdutos($id, $nome, $preco, $dataEntrada) {
+    try {
+        $dataEntrada = date('Y-m-d H:i:s');
+        $query = "UPDATE tshirt SET Nome=?, Preco=?, DataEntrada=? WHERE ID=?";
+        $stmt = db()->prepare($query);
+        $stmt->bind_param("sdsi", $nome, $preco, $dataEntrada, $id);
+        $stmt->execute();
+        // Nota: Se o update correu bem, a propriedade affected_rows deve ter os seguintes valores:
+        // 1 - foi alterado um registo
+        // 0 - a operação correu bem, mas não foi alterado nada (não afetou nenhum registo)
+        if ((db()->affected_rows > 1) || (db()->affected_rows < 0))
+            throw new Exception("Erro - algo se passou");
+    } catch (Exception $e) {
+        return false;
+    }
+    return true;
+}
+
+
+/*
+ * Apagar produto pelo IDCliente
+ * 
+ */
+
+function apagarProduto($idProduto) {
+    $query = "DELETE FROM tshirt WHERE ID= ?";
+    $stmt = db()->prepare($query);
+    $stmt->bind_param("i", $idProduto);
+    $stmt->execute();
+    $result = $stmt->get_result();
+}
+
 /*
  * @return produtos afdsghj
  * 
