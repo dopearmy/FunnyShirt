@@ -37,7 +37,7 @@
         <div id="infoPessoal" class="panel-collapse collapse in">
             <div class="panel-body">
                 <form class="form-horizontal" action="editDadosCliente.php" method="POST">
-                    <input type="hidden" value="<?php $data = date_create($linha['DataNascimento']); echo date_format($data, "d/m/Y") ?>" id="defaultDateNasc">
+                    <input type="hidden" value="<?php $data = date_create($linha['DataNascimento']); echo date_format($data, "Y/m/d") ?>" id="defaultDateNasc">
                     <fieldset>
                         <legend></legend>
                         <div class="col-lg-12">

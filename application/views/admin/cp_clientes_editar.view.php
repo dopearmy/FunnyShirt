@@ -6,7 +6,7 @@
                             <a href="#" class="close" data-dismiss="alert">&times;</a>
                             <strong><?php echoTipoMensagem($tipoMsgGlobal); ?></strong> <?php echo $msgGlobal; ?>
                         </div>
-                    <?php endif; ?>
+                    <?php endif;?>
                 <!--Advanced Tables -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -16,7 +16,7 @@
                         <h3>Dados do Cliente</h3>
                         <?php foreach ($clientes as $linha) { ?>
                             <form class="form-horizontal" action="cp_editDadosCliente.php" method="POST">
-                                <input type="hidden" value="<?php $data = date_create($linha['DataNascimento']); echo date_format($data, "d/m/Y") ?>" id="defaultDateNasc">
+                                <input type="hidden" value="<?php $data = date_create($linha['DataNascimento']); echo date_format($data, "Y/m/d") ?>" id="defaultDateNasc">
                                 <input type="hidden" value="<?php echo (int)$_GET['ID']?>" name="IDCliente" id="idCliente">
                                 <fieldset>
                                     <legend></legend>
@@ -47,9 +47,6 @@
                                                     <label for="idDataNasc">Data Nascimento</label>
                                                     <input type="text" id="datePicker" name="dataNasc" value="" class="form-control">
                                                     <?php echoMsgErro("dataNasc", $msgErros); ?>
-                                                </div>
-                                                <div class="form-group">
-
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 text-center">

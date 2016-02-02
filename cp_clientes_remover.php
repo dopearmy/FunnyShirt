@@ -1,8 +1,6 @@
 <?php
 require_once("./application/inc/controllerInit.php");
 
-var_dump($_GET);
-
 if (isset($_GET['ID'])) {
     apagarCliente($_GET['ID']);
 }

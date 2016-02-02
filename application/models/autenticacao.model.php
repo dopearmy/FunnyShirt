@@ -6,7 +6,7 @@ require_once("./application/inc/db.php");
  * 
  */
 function getInfoUser(){
-    $query= "SELECT UserID, UserName, Password, email, ativo FROM user";
+    $query= "SELECT UserID, UserName, Password, email, ativo, TipoUser FROM user";
     $stmt= db()->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();

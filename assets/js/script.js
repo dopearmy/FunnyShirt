@@ -734,7 +734,7 @@ $(document).ready(function () {
     var d= $('#defaultDateNasc').val();
             
     $('#datePicker').datepicker({
-        dateFormat: 'dd/mm/yy',
+        dateFormat: 'yy/mm/dd',
         dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
         dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
         dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
@@ -744,7 +744,8 @@ $(document).ready(function () {
         prevText: 'Anterior',
         value: '01/01/15',
         changeMonth: true,
-        changeYear: true
+        changeYear: true,
+        yearRange: '1900:+0'
     });
     
     $('#datePicker').datepicker().val(d);

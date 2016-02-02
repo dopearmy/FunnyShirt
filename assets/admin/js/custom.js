@@ -1,6 +1,15 @@
 
 $(document).ready(function () {
     //DataTables
+    $('#datatable-users').DataTable({
+        "iDisplayLength": 5,
+        "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+        "oLanguage": {
+            "sLengthMenu": "Mostrar _MENU_ entradas",
+            "sSearch": "Procurar na Tabela: _INPUT_"
+        },
+        
+    });
     $('#datatable-clientes').DataTable({
         "iDisplayLength": 5,
         "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
@@ -22,9 +31,11 @@ $(document).ready(function () {
         },
         "columnDefs": [{
                 "orderable": false, 
-                "targets": [6,7]
+                "targets": [7]
             }
-        ]
+        ],
+        "order": [[ 6, "desc" ]]
+        
     });
     
     $('#datatable-produtos').DataTable({
@@ -47,7 +58,7 @@ $(document).ready(function () {
     var d = $('#defaultDateNasc').val();
             
     $('#datePicker').datepicker({
-        dateFormat: 'dd/mm/yy',
+        dateFormat: 'yy/mm/dd',
         dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
         dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
         dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
@@ -56,13 +67,12 @@ $(document).ready(function () {
         nextText: 'Próximo',
         prevText: 'Anterior',
         changeMonth: true,
-        changeYear: true
+        changeYear: true,
+        yearRange: '1900:+0'
     });
     
     $('#datePicker').datepicker().val(d);
     
-
-
   
 });
 

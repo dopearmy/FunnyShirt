@@ -32,6 +32,7 @@
                         <td class="text-center" colspan="6">Não tem encomendas no seu histórico!</td>
                     </tr>
                     <?php else: ?>
+                    <tr>
                     <?php foreach ($ordersCliente as $linha){ ?>
                         <td><strong>#<?php echo $linha['IDEncomenda']?></strong></td>
                         

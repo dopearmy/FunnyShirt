@@ -19,8 +19,7 @@
                                         <th>Telefone</th>
                                         <th>Endereço</th>
                                         <th>Data Nasc</th>
-                                        <th>Edit</th>
-                                        <th>Del</th>
+                                        <th>Editar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -32,32 +31,10 @@
                                         <td><?php echo $linha['Telefone'] ?></td>
                                         <td><?php echo $linha['Endereco'] ?></td>
                                         <td><?php $date = date_create($linha['DataNascimento']); echo date_format($date, 'Y/m/d');?></td>
-                                        <td>
+                                        <td class="text-center">
                                             <a class='btn btn-info btn-xs' href='cp_clientes_editar.php?ID=<?php echo $linha['IDCliente'] ?>'><i class="fa fa-edit"></i></a>
                                         </td>
-                                        <td>    
-                                            <a class='btn btn-danger btn-xs' data-toggle="modal" data-target="#apagarModal" href=''><i class="fa fa-times"></i></a>
-                                            <div class="modal fade" id="apagarModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-exclamation-circle fa-2x"></i><strong>&nbsp;Apagar Cliente</strong></h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Deseja mesmo apagar o cliente selecionado? <br><br>
-                                                            <strong>Cliente ID: </strong> <?php echo $linha['IDCliente'] ?>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <form action="cp_clientes_remover.php?ID=<?php echo $linha['IDCliente'] ?>" method="POST">
-                                                                <button type="submit" class="btn btn-danger">Apagar</button>
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
+                                        
                                     </tr>
                                     <?php } ?>
                                 </tbody>

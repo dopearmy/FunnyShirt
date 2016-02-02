@@ -73,7 +73,19 @@
                             <a <?php if($page == "cp_encomendas.php") echo 'class="active-menu"'?> href="cp_encomendas.php"><i class="fa fa-credit-card fa-3x"></i> Encomendas</a>
                         </li>
                         <li>
-                            <a <?php if($page == "cp_clientes.php") echo 'class="active-menu"'?> href="cp_clientes.php"><i class="fa fa-users fa-3x"></i> Clientes</a>
+                            <a <?php if($page == "cp_utilizadores.php") echo 'class="active-menu"'?> href="cp_utilizadores.php"><i class="fa fa-users fa-3x"></i> Utilizadores</a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a <?php if($page == "cp_clientes.php") echo 'class="active-menu"'?> href="cp_clientes.php">Clientes</a>
+                                </li>
+                                <li>
+                                    <a href="cp_funcionarios.php">Funcionários</a>
+                                </li>
+                                <li>
+                                    <a href="cp_gestores.php">Gestores</a>
+                                </li>
+                            
+                            </ul>
                         </li>
                         <li>
                             <a <?php if($page == "cp_opcoes.php") echo 'class="active-menu"'?> href="cp_opcoes.php"><i class="fa fa-cogs fa-3x"></i> Opções</a>
