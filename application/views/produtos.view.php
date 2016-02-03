@@ -28,7 +28,7 @@
                             <li class="dropdown-tree open-tree active">
                                 <a class="dropdown-tree-a">T-Shirts</a>
                             </li>
-                            <li><a href="#">Personalizadas</a></li>
+                            <li><a href="thirts_personalizadas.php">Personalizadas</a></li>
                         </ul>
                     </div>
                 </div>
@@ -405,9 +405,50 @@
             </div>
         </div>
         <!--/.categoryProduct || product content end-->
+        
+        <div class="text-center">
+        <ul class="pagination">
+        <?php
+        if ($currentpage > 1) {
+           // show << link to go back to page 1
+           echo "<li><a href='{$_SERVER['PHP_SELF']}?page=1'><<</a></li>";
+           // get previous page num
+           $prevpage = $currentpage - 1;
+           // show < link to go back to 1 page
+           echo "<li><a href='{$_SERVER['PHP_SELF']}?page=$prevpage'><</a></li>";
+        } // end if 
 
-        <div class="pull-right pull-right col-sm-4 col-xs-12 no-padding text-right text-left-xs">
-            <p>Showing 1–450 of 12 results</p>
+        // loop to show links to range of pages around current page
+        for ($x = ($currentpage - $range); $x < (($currentpage + $range) + 1); $x++) {
+           // if it's a valid page number...
+           if (($x > 0) && ($x <= $totalpages)) {
+              // if we're on current page...
+              if ($x == $currentpage) {
+                   echo "<li class='disabled active'><a href='{$_SERVER['PHP_SELF']}?page=$x' class='disabled'>$x</a></li>";
+                 // 'highlight' it but don't make a link
+              // if not current page...
+              } else {
+                 // make it a link
+                 echo "<li><a href='{$_SERVER['PHP_SELF']}?page=$x'>$x</a></li>";
+              } // end else
+           } // end if 
+        } // end for
+                         
+        // if not on last page, show forward and last page links        
+        if ($currentpage != $totalpages) {
+           // get next page
+           $nextpage = $currentpage + 1;
+            // echo forward link for next page 
+           echo "<li><a href='{$_SERVER['PHP_SELF']}?page=$nextpage'>></a></li>";
+           // echo forward link for lastpage
+           echo "<li><a href='{$_SERVER['PHP_SELF']}?page=$totalpages'>>></a></li>";
+        } // end if
+
+        ?>
+        </ul>
+            <div class="pull-right pull-right col-sm-4 col-xs-12 no-padding text-right text-left-xs">
+                <p>Total de <strong><?php echo count($produtos) ?></strong> resultados</p>
+            </div>
         </div>
     </div>
     <!--/.categoryFooter-->

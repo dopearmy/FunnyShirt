@@ -7,7 +7,7 @@ foreach ($produtos as $linha) {
     $linha['DataEntrada'];
 }
 
-foreach ($produtos as $linha) {
+foreach ($result as $linha) {
     ?>
     <div class="item col-sm-4 col-lg-4 col-md-4 col-xs-6">
         <div class="product">

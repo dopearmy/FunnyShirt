@@ -197,40 +197,33 @@
                             <li class="active"><a href="index.php">Home</a></li>
                             <li class="dropdown megamenu-fullwidth"><a data-toggle="dropdown" class="dropdown-toggle" href="produtos.php">Produtos<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li class="megamenu-content ">
+                                    <li class="megamenu-content">
                                         <ul class="col-lg-3 col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
                                             <li class="no-border">
                                                 <p class="promo-1"><a href="produtos.php"><strong>Todos Produtos</strong></a></p>
                                             </li>
-                                            <li><a href="produtos.php">Produtos</a></li>
-                                            <li><a href="category.html">XXX</a></li>
+                                            <li><a href="produtos.php">T-Shirts</a></li>
+                                            <li><a href="thirts_personalizadas.php">T-Shirt Personalizadas</a></li>
                                             <li><a href="category.html">XXXX</a></li>
                                             <li><a href="category.html">XXXXXX</a></li>
                                         </ul>
                                         <ul class="col-lg-3 col-sm-3 col-md-3  col-xs-4">
                                             <li>
-                                                <a class="newProductMenuBlock" href="product-details.html">
+                                                <a class="newProductMenuBlock" href="produtos.php">
                                                     <img class="img-responsive" src="images/site/promo1.jpg" alt="product">
-                                                    <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>TSHIRT</span> 
+                                                    <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>T-Shirts</span> 
                                                 </a>
                                             </li>
                                         </ul>
                                         <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
                                             <li>
-                                                <a class="newProductMenuBlock" href="product-details.html">
+                                                <a class="newProductMenuBlock" href="thirts_personalizadas.php">
                                                     <img class="img-responsive" src="images/site/promo2.jpg" alt="product">
-                                                    <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>TSHIRT</span> 
+                                                    <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>T-Shirt Personalizadas</span> 
                                                 </a>
                                             </li>
                                         </ul>
-                                        <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
-                                            <li>
-                                                <a class="newProductMenuBlock" href="product-details.html">
-                                                    <img class="img-responsive" src="images/site/promo3.jpg" alt="product">
-                                                    <span class="ProductMenuCaption"><i class="fa fa-caret-right"></i>TSHIRT</span> 
-                                                </a>
-                                            </li>
-                                        </ul>
+                                       
                                     </li>
                                 </ul>
                             </li>
