@@ -14,43 +14,44 @@
                     </div>
                     <div class="col-md-6">
                         <h3>Dados do Produto</h3>
-                            <form class="form-horizontal" action="" method="POST">
-                                <fieldset>
-                                    <legend></legend>
-                                    <div class="col-lg-12">
-                                        <div class="row userInfo">
-                                            <div class="col-xs-12">
-                                                <div<?php echoClassformGroup('imgProduto', $msgErros, $dadosSubmetidos); ?>>
-                                                    <label for="idImgProduto">Imagem Produto</label>
-                                                    <input id="idImgProduto" type="file" name="imgProduto"><br>
-                                                    <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-save"></i> &nbsp; Enviar</button>
-                                                    <?php echoMsgErro("imgProduto", $msgErros); ?>
-                                                </div> 
-                                                <div<?php echoClassformGroup('id', $msgErros, $dadosSubmetidos); ?>>
-                                                    <label for="idProduto">ID Produto</label>
-                                                    <input type="text" id="idProduto" name="id" value="<?php echo $totalProduto?>" class="form-control" disabled="">
-                                                </div>  
-                                                <div<?php echoClassformGroup('nome', $msgErros, $dadosSubmetidos); ?>>
-                                                    <label for="idNome">Nome Produto</label>
-                                                    <input type="text" id="idNome" name="nome" value="" class="form-control">
-                                                    <?php echoMsgErro("nome", $msgErros); ?>
-                                                </div>    
-                                                <div<?php echoClassformGroup('preco', $msgErros, $dadosSubmetidos); ?>>
-                                                    <label for="idPreco">Preço</label>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">€</span>
-                                                        <input style="z-index: 1" type="number" name="preco" value="19.99" min="0" step="0.01" data-number-to-fixed="" data-number-stepfactor="100" class="form-control currency" id="c2">
-                                                        <?php echoMsgErro("preco", $msgErros); ?>
-                                                    </div>
+                        
+                        <form class="form-horizontal" action="<?php $_SERVER['PHP_SELF']?>" method="POST" enctype="multipart/form-data">
+                            <fieldset>
+                                <legend></legend>
+                                <div class="col-lg-12">
+                                    <div class="row userInfo">
+                                        <div class="col-xs-12">
+                                            <div<?php echoClassformGroup('imgProduto', $msgErros, $dadosSubmetidos); ?>>
+                                                <label for="idImgProduto">Imagem Produto</label>
+                                                    <input type="file" name="nomeCampo">
+                                                    <br>
+                                                <?php echoMsgErro("imgProduto", $msgErros); ?>
+                                            </div> 
+                                            <div<?php echoClassformGroup('id', $msgErros, $dadosSubmetidos); ?>>
+                                                <label for="idProduto">ID Produto</label>
+                                                <input type="text" id="idProduto" name="id" value="<?php echo $totalProduto?>" class="form-control" disabled="">
+                                            </div>  
+                                            <div<?php echoClassformGroup('nome', $msgErros, $dadosSubmetidos); ?>>
+                                                <label for="idNome">Nome Produto</label>
+                                                <input type="text" id="idNome" name="nome" value="" class="form-control">
+                                                <?php echoMsgErro("nome", $msgErros); ?>
+                                            </div>    
+                                            <div<?php echoClassformGroup('preco', $msgErros, $dadosSubmetidos); ?>>
+                                                <label for="idPreco">Preço</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">€</span>
+                                                    <input style="z-index: 1" type="number" name="preco" value="19.99" min="0" step="0.01" data-number-to-fixed="" data-number-stepfactor="100" class="form-control currency" id="c2">
+                                                    <?php echoMsgErro("preco", $msgErros); ?>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 text-center">
-                                                <button type="submit" class="btn btn-primary" onclick="alert('TODO')"><i class="fa fa-save"></i> &nbsp; Inserir</button>
-                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 text-center">
+                                            <button type="submit" class="btn btn-primary" onclick="//alert('TODO')"><i class="fa fa-save"></i> &nbsp; Inserir</button>
                                         </div>
                                     </div>
-                                </fieldset>
-                            </form>
+                                </div>
+                            </fieldset>
+                        </form>
                     </div>
                 </div>
                 <!--End Advanced Tables -->

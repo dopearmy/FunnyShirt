@@ -1,8 +1,10 @@
 <?php
-require_once("./application/inc/controllerInit.php");
-require_once("./application/models/encomendas.model.php");
+require_once("./application/models/autenticacao.model.php");
+require_once("./application/models/clientes.moldel.php");
+session_start();
 
-$page = "cp_index.php";
+$page = "cp_clientes.php";
+$clientes = array();
 
 //Se não estiver logado redireciona para login.php
 if (!isUserAdmin()) {
@@ -15,15 +17,13 @@ if (!isUserAdmin()) {
     }
 }
 
-$totalClientes = count(getInfoClientes());
-$totalOrders = count(getOrders());
-$totalProdutos = count(getInfoProduto());
 
 
+$clientes = getInfoClientes();
 
 // Variáveis usadas pelo do template
-$tituloPagina = "Inicio";
+$tituloPagina = "Clientes";
 
 require("./application/views/admin/top.template.php");
-require("./application/views/admin/cp_index.view.php");
+require("./application/views/admin/cp_clientes.view.php");
 require("./application/views/admin/bottom.template.php");

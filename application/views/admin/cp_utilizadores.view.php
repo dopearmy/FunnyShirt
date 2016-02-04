@@ -3,6 +3,12 @@
         <hr>
         <div class="row">
             <div class="col-md-12">
+                 <?php if (isset($msgGlobal)) : ?>
+                    <div class="<?php echoAlertClass($tipoMsgGlobal); ?>">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong><?php echoTipoMensagem($tipoMsgGlobal); ?></strong> <?php echo $msgGlobal; ?>
+                    </div>
+                <?php endif;?>
                 <!--Advanced Tables -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -23,6 +29,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
                                     <tr>
                                         <?php foreach ($users as $linha) { ?>
                                             <td><?php echo $linha['UserID'] ?></td>
@@ -45,9 +52,10 @@
                                                 <?php endif; ?>
                                             </td>
                                             <td class="text-center"> 
+                                                
                                                 <?php if ($linha['ativo'] == 0): ?>
-                                                <a class='btn btn-success btn-xs' href='cp_utilizadores_confirmar.php?ID=<?php echo $linha['UserID'] ?>&estado=1'><i class="fa fa-check-square-o"></i></a>
-                                                <?php elseif($linha['ativo'] == 1): ?>
+                                                    <a class='btn btn-success btn-xs' href='cp_utilizadores_confirmar.php?ID=<?php echo $linha['UserID'] ?>&estado=1'><i class="fa fa-check-square-o"></i></a>
+                                                <?php elseif($linha['ativo'] == 1):?>
                                                     <a class='btn btn-danger btn-xs' href='cp_utilizadores_confirmar.php?ID=<?php echo $linha['UserID'] ?>&estado=0'><i class="fa fa-minus-square-o"></i></a>
                                                 <?php endif; ?>
                                             </td>
@@ -56,7 +64,6 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
                 <!--End Advanced Tables -->

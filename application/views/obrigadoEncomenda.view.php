@@ -2,7 +2,7 @@
     <div class="col-lg-12 ">
         <div class="row userInfo">
             <div class="thanxContent text-center">
-                <h1>Encomenda número <a href="order-status.html">#<?php echo $_GET['id']; ?></a></h1>
+                <h1>Encomenda número <a href="conta_encomendas.php">#<?php echo $_GET['id']; ?></a></h1>
             </div>
             <div class="col-lg-7 col-center">
                 <h4></h4>

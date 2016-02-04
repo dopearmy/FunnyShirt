@@ -3,6 +3,8 @@
 O teu Brower não suporta o Canvas!
 </canvas>-->
 
+
+
 <br>
 <?php
 if(isset($path)){
@@ -32,6 +34,13 @@ if(isset($path)){
                 <canvas id="myCanvas" width="200" height="200" style="border:1px solid #d3d3d3;">
                 O teu Brower não suporta o Canvas!
                 </canvas>
+                <script>
+                    var c = document.getElementById("myCanvas");
+                    var ctx = c.getContext("2d");
+                    var img = document.getElementById("imgUpload");
+                    ctx.drawImage(img,10,10,180,180);
+
+                </script>
                 <img src="images/img-base/t_shirt_frente.png" alt="img" class="img-responsive">
                 
             </a>

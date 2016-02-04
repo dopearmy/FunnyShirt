@@ -65,6 +65,5 @@ if (!empty($_POST)) { // Formulário foi submetido - é um pedido POST
                 // S - Sucesso
 
 require("./application/views/top.template.php");
-require("./application/views/loginModel.view.php");
 require("./application/views/registar.view.php");
 require("./application/views/bottom.template.php");

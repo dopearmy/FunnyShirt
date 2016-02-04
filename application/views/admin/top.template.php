@@ -84,12 +84,6 @@
                                 <li>
                                     <a <?php if($page == "cp_clientes.php") echo 'class="active-menu"'?> href="cp_clientes.php">Clientes</a>
                                 </li>
-                                <li>
-                                    <a href="cp_funcionarios.php">Funcionários</a>
-                                </li>
-                                <li>
-                                    <a href="cp_gestores.php">Gestores</a>
-                                </li>
                             
                             </ul>
                         </li>

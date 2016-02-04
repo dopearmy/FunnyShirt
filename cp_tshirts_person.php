@@ -1,6 +1,6 @@
 <?php
 require_once("./application/inc/controllerInit.php");
-require_once("./application/models/thirts_personalizadas.model.php");
+require_once("./application/models/tshirts_personalizadas.model.php");
 
 $page = "cp_produtos.php";
 

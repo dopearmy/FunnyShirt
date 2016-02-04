@@ -94,6 +94,29 @@ function validarDadosProdutos($nome, $preco) {
     return $arrayMensagens;
 }
 
+/*
+ * Inserir produto
+ * 
+ */
+
+function inserirProduto($nome, $preco) {
+    try {
+        $query = "INSERT INTO tshirt (Nome, Preco, DataEntrada) values (?,?,NOW())";
+        $stmt = db()->prepare($query);
+        $stmt->bind_param("sd", $nome, $preco);
+        $stmt->execute();
+        // Nota: Se o update correu bem, a propriedade affected_rows deve ter os seguintes valores:
+        // 1 - foi alterado um registo
+        // 0 - a operação correu bem, mas não foi alterado nada (não afetou nenhum registo)
+        if ((db()->affected_rows > 1) || (db()->affected_rows < 0))
+            throw new Exception("Erro - algo se passou");
+    } catch (Exception $e) {
+        return false;
+    }
+    return true;
+}
+
+
 
 /*
  * Alterar dados produtos

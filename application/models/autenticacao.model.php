@@ -245,6 +245,21 @@ function alterarDadosUser($UserID, $username, $email, $estadoConta) {
 }
 
 
+function validarPassword($novaSenha1, $novaSenha2){
+    $arrayMensagens = array();
+
+    if (trim($novaSenha1)=="")
+        $arrayMensagens["novaSenha1"] = "Senha é obrigatória";
+
+    if (trim($novaSenha2)=="")
+        $arrayMensagens["novaSenha2"] = "Confirmação da nova senha é obrigatória";
+    else
+        if ($novaSenha1 != $novaSenha2)
+            $arrayMensagens["novaSenha2"] = "Confirmação da nova senha não é igual à nova senha";
+
+    return $arrayMensagens; 
+}
+
 
 /*
  * Confirmar encomenda pelo ID
@@ -252,10 +267,13 @@ function alterarDadosUser($UserID, $username, $email, $estadoConta) {
  */
 
 function estadoUser($IDUser, $estado) {
+    
     try {
+        
         $query = "UPDATE user SET ativo=? WHERE UserID=?";
         $stmt = db()->prepare($query);
         $stmt->bind_param("ii", $estado, $IDUser);
+        
         $stmt->execute();
         // Nota: Se o update correu bem, a propriedade affected_rows deve ter os seguintes valores:
         // 1 - foi alterado um registo
@@ -268,6 +286,54 @@ function estadoUser($IDUser, $estado) {
     return true;
 }
 
+
+/*
+ * Verificar se user existe
+ * 
+ */
+function getUserExits($username){
+    $query= "SELECT EXISTS(SELECT UserID, UserName, Password, email, ativo FROM user WHERE UserName= ?)";
+    $stmt = db()->prepare($query);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQL_ASSOC);
+}
+
+
+
+/*
+ * Confirmar encomenda pelo ID
+ * 
+ */
+
+function criarUser($username, $password, $tipoUser, $email, $nome, $numContribuinte, $telefone, $endereco, $dataNasc) {
+    try {
+        db()->autocommit(false);
+        $stmt = db()->prepare('INSERT INTO user (UserName, Password, TipoUser, email, ativo) values (?,?,?,?,1)');
+        $hash = Password_hash($password, PASSWORD_DEFAULT);
+        $stmt->bind_param("ssss", $username, $hash, $tipoUser, $email);
+        $stmt->execute();
+
+        $idUser = db()->insert_id;
+        
+        $stmt = db()->prepare('INSERT INTO cliente (Nome, NumContribuinte, Telefone, Endereco, DataNascimento, UserID) values (?,?,?,?,?,?)');
+        
+        $stmt->bind_param("sdsssi", $nome, $numContribuinte, $telefone, $endereco, $dataNasc, $idUser);
+       
+        $stmt->execute();
+         
+        if ($stmt->affected_rows != 1) {
+            throw new Exception('Não inseriu o cliente corretamente');
+        }
+        
+        db()->commit();
+    } catch (Exception $e) {
+        db()->rollback();
+    }
+    db()->autocommit(true);
+    return true;
+}
 
 
 
