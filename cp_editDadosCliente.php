@@ -19,11 +19,11 @@ $infoCliente = getInfoCliente(getUserInfo()["UserID"]);
 $infoUser = getInfoUserByID(getUserInfo()["UserID"]);
 
 //Se não estiver logado redireciona para login.php
-if (isUserAnonimo()) {
+if (!isUserAdmin()) {
     if (headers_sent()) {
         die("O redirecionamento falhou. Por favor, clique neste link: <a href=login.php>Login</a>");
     } else {
-        $_SESSION["flash_loginMessage"] = "Acesso Negado: Efectue Login para visualizar o conteudo.";
+        $_SESSION["flash_loginMessage"] = "Acesso Negado: Área apenas para os gestores do website!";
         $_SESSION["flash_loginRedirectTo"] = $_SERVER["REQUEST_URI"];
         exit(header("Location: login.php"));
     }

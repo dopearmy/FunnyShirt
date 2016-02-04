@@ -15,6 +15,12 @@ $(document).ready(function () {
     
     $('[data-toggle="tooltip"]').tooltip(); 
     $('.footable').footable();
+    
+
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    var img=document.getElementById("imgUpload");
+    ctx.drawImage(img,10,10,180,180);
 
     
     /*==================================

@@ -652,6 +652,7 @@ legend {
     right: 0;
 }
 
+
 .megamenu .dropdown.megamenu-fullwidth .dropdown-menu {
     width: 100%;
     left: 0;
@@ -6254,4 +6255,18 @@ color: #fff;
 .bg-color-brown {
 background-color: #B94A00;
 color: #fff;
+}
+
+#myCanvas{
+    margin-top: 15%;
+    margin-left: 16%;
+    position: absolute;
+    z-index: 100;
+    border-radius: 5px;
+}
+
+#myCanvas:hover{
+    border: 2px dotted #00CE6F;
+    border-bottom-color: #00CE6F;
+    background-color: #E5E5E5;
 }

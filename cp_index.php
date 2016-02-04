@@ -7,9 +7,13 @@ $page = "cp_index.php";
 
 //Se não estiver logado redireciona para login.php
 if (!isUserAdmin()) {
-    $_SESSION["flash_loginMessage"] = "Acesso Negado: Área penas para os gestores do website!";
-    $_SESSION["flash_loginRedirectTo"] = $_SERVER["REQUEST_URI"];
-    exit(header("Location: login.php"));
+    if (headers_sent()) {
+        die("O redirecionamento falhou. Por favor, clique neste link: <a href=login.php>Login</a>");
+    } else {
+        $_SESSION["flash_loginMessage"] = "Acesso Negado: Área apenas para os gestores do website!";
+        $_SESSION["flash_loginRedirectTo"] = $_SERVER["REQUEST_URI"];
+        exit(header("Location: login.php"));
+    }
 }
 
 $totalClientes = count(getInfoClientes());

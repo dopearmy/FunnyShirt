@@ -27,6 +27,8 @@ if ($rememberMe == true) {
     setcookie("tshirtshop", "tsmicaelmatiasCookie", $hour, "/");
 }
 
+$users = getInfoUser();
+
 if (empty($_POST)) { // Formulário não foi submetido - é um pedido GET
     if (isset($_SESSION["flash_loginRedirectTo"])) {
         $data["redirectTo"] = $_SESSION["flash_loginRedirectTo"];
@@ -52,7 +54,11 @@ if (!empty($_POST)) { // Formulário foi submetido - é um pedido POST
             $tipoMsgGlobal = "E";
         } else {
             $_SESSION['UserInfo'] = $userInfo;
-            if (trim($data["redirectTo"]) != "") {
+            if($_SESSION['UserInfo']['ativo'] != 1){
+                $msgGlobal = "Credenciais Inválidas";
+                $tipoMsgGlobal = "E";
+                unset($_SESSION['UserInfo']);
+            }elseif (trim($data["redirectTo"]) != "") {
                 header("Location: " . $data["redirectTo"]);
                 exit;
             }

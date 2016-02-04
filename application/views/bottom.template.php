@@ -31,9 +31,8 @@
                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
                     <h3>Shop</h3>
                     <ul>
-                        <li><a href="produtos.php">Produtos</a></li>
                         <li><a href="produtos.php">T-shirts</a></li>
-                        <li><a href="produtos.php">T-shirts Personalizadas</a></li>
+                        <li><a href="tshirts_personalizadas.php">T-shirts Personalizadas</a></li>
                     </ul>
                 </div>
 

@@ -1,4 +1,5 @@
 
+
 $(document).ready(function () {
     //DataTables
     $('#datatable-users').DataTable({
@@ -11,6 +12,8 @@ $(document).ready(function () {
         
     });
     $('#datatable-clientes').DataTable({
+        "bProcessing": true,
+        "bDeferRender": true,
         "iDisplayLength": 5,
         "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
         "oLanguage": {
@@ -23,6 +26,8 @@ $(document).ready(function () {
     });
     
     $('#datatable-encomendas').DataTable({
+        "bProcessing": true,
+        "bDeferRender": true,
         "iDisplayLength": 5,
         "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
         "oLanguage": {
@@ -39,6 +44,8 @@ $(document).ready(function () {
     });
     
     $('#datatable-produtos').DataTable({
+        "bProcessing": true,
+        "bDeferRender": true,
         "iDisplayLength": 5,
         "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
         "oLanguage": {
@@ -94,11 +101,13 @@ $(document).ready(function () {
     
     $('#datePickerEntrada').datepicker().val(d);
     
-  
+
+        
 });
 
 (function ($) {
     "use strict";
+    
 
     var mainApp = {
         main_fun: function () {

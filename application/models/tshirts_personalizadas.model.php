@@ -52,10 +52,21 @@ function getImagemProduto(){
     echo$ConteudoBinario;
 }
 
-function getPathImagem(){
-    $query= "select Path from imagempersonalizada where ID=4";
+function getInfoTP(){
+    $query= "select * from imagempersonalizada";
     $stmt= db()->prepare($query);
-    //$stmt->bind_param("i", $_GET["ID"]);
+    $stmt->execute();
+    $result= $stmt->get_result();
+
+    return $result->fetch_all(MYSQL_ASSOC);
+}
+
+
+
+function getPathImagem($id){
+    $query= "select Path from imagempersonalizada where ID=?";
+    $stmt= db()->prepare($query);
+    $stmt->bind_param("i", $id);
     $stmt->execute();
     $stmt->bind_result($Path);
     $result= $stmt->get_result();
